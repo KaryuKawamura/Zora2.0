@@ -2,6 +2,7 @@ const passport = require('passport');
 const dateToHoroscope = require('./dateToHoroscope');
 
 
+
 module.exports = (express) => {
 
   const router = express.Router();
@@ -35,6 +36,9 @@ module.exports = (express) => {
     });
   });
 
+  router.get('/cart', (req, res) => {
+    res.render('cart');
+  });
 
   router.get('/error', (req, res) => {
     res.send('You are not logged in!');

@@ -7,8 +7,8 @@ const router = require('./router')(express);
 const morgan = require('morgan');
 const hb = require('express-handlebars');
 
-// const ClothesService = require('./ClothesService');
-// const ClothesRouter = require('./ClothesRouter');
+const CartService = require('./cart/CartService');
+const CartRouter = require('./cart/CartRouter');
 
 require('dotenv').config();
 
@@ -30,17 +30,15 @@ app.use(session({
   cookie: {secure: false}
 }));
 
-
-// const clothesService = new ClothesService(knex);
-
-// app.use('/api/notes/', (new ClothesRouter(clothesService)).router());
-
+const cartService = new CartService(knex);
+app.use('/api/cart', ((new CartRouter(cartService)).router()));
 
 
 app.use(express.static('public'))
 // app.use(express.static('pages'))
 
-app.use(bodyParser());
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
 setupPassport(app);
 
