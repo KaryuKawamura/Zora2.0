@@ -1,43 +1,26 @@
 class ClothesService {
-  constructor(knex) {
-    this.knex = knex;
-  }
+    constructor(knex) {
+      this.knex = knex;
+    }
 
-  list() {
-    let query = this.knex
-      .select("name", "price", "img")
-      .from("clothesmale")
-      .where({ type_id: 3 })
-      .limit(12);
-    console.log("additonal check?");
-    console.log(query);
-    return query.then(data => {
-      console.log(data);
-      return data;
-    });
-  }
-
-  /*else {
+    list() {
       let query = this.knex
-        .select("users.username", "notes.id", "content")
-        .from("notes")
-        .innerJoin("users", "notes.user_id", "users.id");
-
-      return query.then(rows => {
-        console.log(rows);
-        const result = {};
-        rows.forEach(row => {
-          if (typeof result[row.username] === "undefined") {
-            result[row.username] = [];
-          }
-          result[row.username].push({
-            id: row.id,
-            content: row.content
-          });
-        });
-        return result;
+        .select("clothes_id", "name", "price", "img")
+        .from("clothes")
+        .where({ 
+          type_id: 3,
+          gender_id: 1
+        })
+        .limit(12);
+      console.log("additonal check?");
+      console.log(query);
+      return query.then(data => {
+        console.log(data);
+        return data;
       });
-    }*/
-}
-
-module.exports = ClothesService;
+    };
+    
+  };
+  
+  module.exports = ClothesService;
+  

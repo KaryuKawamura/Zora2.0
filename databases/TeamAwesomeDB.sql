@@ -6,6 +6,12 @@ CREATE TABLE UsersTable
   "horoscope" varchar
 );
 
+CREATE TABLE horoscope
+(
+"id" serial primary key,
+"horoscope" varchar,
+)
+
 CREATE TABLE fashionStyles
 (
   "userstable_id" int,
@@ -13,7 +19,7 @@ CREATE TABLE fashionStyles
   "gender_id" int
 );
 
-CREATE TABLE clothesMale
+CREATE TABLE clothes
 (
   "clothes_id" serial primary key,
   "name" VARCHAR(255),
@@ -21,19 +27,10 @@ CREATE TABLE clothesMale
   "type_id" int,
   "gender_id" int,
   "price" varchar,
-  "img" varchar
+  "img" varchar,
+  "horoscope" varchar
 );
 
-CREATE TABLE clothesFemale
-(
-  "clothes_id" serial primary key,
-  "name" VARCHAR,
-  "style_id" int,
-  "type_id" int,
-  "gender_id" int,
-  "price" VARCHAR,
-  "img" varchar
-);
 
 CREATE TABLE type
 (
