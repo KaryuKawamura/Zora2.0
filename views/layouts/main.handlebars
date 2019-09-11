@@ -13,7 +13,7 @@
   {{!-- Top Navigation Bar --}}
   <nav class="navbar navbar-light bg-light ">
     {{!-- Logo --}}
-    <a class="navbar-brand" href="#"><img src="/images/logo.png" class="d-inline-block align-center" alt="" id="logo">
+    <a class="navbar-brand" href="/secret"><img src="/images/logo.png" class="d-inline-block align-center" alt="" id="logo">
     Zora
     </a>
     {{!-- User horoscope icon --}}
@@ -23,6 +23,14 @@
     <span class="navbar-text" id="greeting">
     Welcome back {{name}}, The Beautiful {{horoscope}}
     </span>
+    {{!-- Cart --}}
+    <a href="/cart">
+    <button type="button" class="btn btn-primary">
+      Cart
+      <span class="badge badge-light">{{cartCounter}}</span>
+    </button></a>
+
+    
     {{!-- Logout --}}
     <a href="/logout" id="logout">
       <button class="btn btn-outline-success" type="submit">
@@ -32,6 +40,7 @@
     </div>
     
   </nav>
+
 
   {{{body}}}
   

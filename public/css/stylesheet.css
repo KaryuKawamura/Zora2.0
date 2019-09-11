@@ -1,6 +1,7 @@
 /* Top Navigation Bar Elements */
 
-#logo, #horoscopeIcon {
+#logo,
+#horoscopeIcon {
   width: 40px;
   height: 40px;
 }
@@ -13,4 +14,14 @@
 .container {
   margin-top: 40px;
   margin-bottom: 40px;
+}
+
+#testing {
+  display: flex;
+  flex-flow: wrap;
+  padding-top: 10px;
+}
+
+#cartThumbnail {
+  height: 150px;
 }

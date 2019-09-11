@@ -1,4 +1,4 @@
-const express = require('express');
+const express = require("express");
 const app = express();
 const session = require('express-session');
 const setupPassport = require('./passport/passport');
@@ -7,8 +7,11 @@ const router = require('./router')(express);
 const morgan = require('morgan');
 const hb = require('express-handlebars');
 
-const CartService = require('./cart/CartService');
-const CartRouter = require('./cart/CartRouter');
+const ClothesService = require("./service/ClothesService");
+const ClothesRouter = require("./router/ClothesRouter");
+
+const CartService = require('./service/CartService');
+const CartRouter = require('./router/CartRouter');
 
 require('dotenv').config();
 
@@ -30,20 +33,29 @@ app.use(session({
   cookie: {secure: false}
 }));
 
+app.use(bodyParser.urlencoded({
+  extended: false
+}));
+
+app.use(bodyParser.json());
+
+
+const clothesService = new ClothesService(knex);
+app.use('/api/clothes/', (new ClothesRouter(clothesService)).router());
+
+
 const cartService = new CartService(knex);
-app.use('/api/cart', ((new CartRouter(cartService)).router()));
+app.use('/api/cart/', (new CartRouter(cartService)).router());
 
 
 app.use(express.static('public'))
 // app.use(express.static('pages'))
 
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
-
 setupPassport(app);
+app.use("/", router);
 
-app.use('/', router);
 
-app.listen(8080, function () {
-  console.log(`Application is listening to port 8080`)
+
+app.listen(8080, function() {
+  console.log(`Application is listening to port 8080`);
 });
