@@ -4,8 +4,9 @@ const knex = require('knex')({
   client: 'postgresql',
   connection: {
     database: process.env.DB_DATABASE,
-    user: process.env.DB_USER,
-    password: process.env.DB_PASS
+    user: process.env.DB_USERNAME,
+    password: process.env.DB_PASSWORD,
+    port: 5431
   }
 });
 
@@ -73,14 +74,14 @@ function dateToHoroscope(req, res, next) {
 
     // Adding the calculated horoscope to the newly created user row (with the largest ID #) in the UsersTable database
     knex
-      .from('userstable')
+      .from("userstable")
       .max('id')
       .then(([row]) => {
         if (!row) {
           console.log("ID does not exist")
           return res.send("ID does not exist")
         }
-        return knex('userstable')
+        return knex("userstable")
           .update('horoscope', horoscope)
           .where('id', '=', row.max)
       });

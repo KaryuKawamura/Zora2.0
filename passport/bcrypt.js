@@ -1,6 +1,7 @@
-const bcrypt = require("bcrypt");
+const bcrypt = require('bcrypt');
 
-module.exports.hashPassword = plainTextPassword => {
+
+module.exports.hashPassword = (plainTextPassword) => {
   return new Promise((resolve, reject) => {
     bcrypt.genSalt((err, salt) => {
       if (err) {
@@ -16,6 +17,7 @@ module.exports.hashPassword = plainTextPassword => {
     });
   });
 };
+
 
 module.exports.checkPassword = (plainTextPassword, hashedPassword) => {
   return new Promise((resolve, reject) => {

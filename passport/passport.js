@@ -21,7 +21,7 @@ module.exports = (app) => {
   passport.use('local-login', new LocalStrategy(
     async (name, password, done) => {
       try {
-        let users = await knex('userstable').where({
+        let users = await knex("userstable").where({
           name: name
         });
         if (users.length == 0) {
@@ -49,7 +49,7 @@ module.exports = (app) => {
   passport.use('local-signup', new LocalStrategy(
     async (name, password, done) => {
       try {
-        let users = await knex('userstable').where({
+        let users = await knex("userstable").where({
           name: name
         });
         console.log(users.length)
@@ -63,7 +63,7 @@ module.exports = (app) => {
           name: name,
           password: hash
         };
-        let userId = await knex('userstable').insert(newUser).returning('id');
+        let userId = await knex("userstable").insert(newUser).returning('id');
         newUser.id = userId[0];
         done(null, newUser);
       } catch (err) {
@@ -78,7 +78,7 @@ module.exports = (app) => {
   });
 
   passport.deserializeUser(async (name, done) => {
-    let users = await knex('userstable').where({
+    let users = await knex("userstable").where({
       name: name
     });
     if (users.length == 0) {

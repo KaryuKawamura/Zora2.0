@@ -28,7 +28,11 @@ CREATE TABLE clothes
   "gender_id" int,
   "price" varchar,
   "img" varchar,
+<<<<<<< HEAD
   "horoscope_id" varchar
+=======
+  "horoscope" varchar
+>>>>>>> 5578a21472604ea5f2987f7c9717fab140b3d6b4
 );
 
 

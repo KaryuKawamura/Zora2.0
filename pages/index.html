@@ -3,17 +3,75 @@
 
 <head>
   <meta charset="utf-8">
-  <title>success</title>
+  <title>Zora</title>
 </head>
+<link href="https://fonts.googleapis.com/css?family=Arima+Madurai&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-  integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="./css/stylesheet.css">
 
 <body>
-  <h1>Welcome to Horoscope Fashion!</h1>
-  <h2>Dress for Success</h2>
-  <a href="/login"><button type="button" class="btn btn-primary" name="button">Login</button></a>
-  <a href="/signup"><button type="button" class="btn btn-secondary" name="button">Signup</button></a>
+  <!-- Top Navigation Bar-->
+  <nav class="navbar navbar-expand-md navbar-light bg-light">
+    <!-- Logo -->
+    <a class="navbar-brand" href="/"><img src="/images/logo.png" alt="Zora" id="logo">
+      Zora
+    </a>
+      <!-- <ul class="navbar-nav ml-auto"> -->
+        <a href="/login" class="ml-auto" id="nav-link">Login</a>
+      <!-- </ul> -->
+      <!-- <ul class="navbar-nav ml-auto"></ul> -->
+        <a href="/signup" id="nav-link">Sign up</a>
+      <!-- </ul> -->
+  </nav>
+  <!-- Highlight Carousel -->
+  <div class="container-fluid row" id="highlight">
+  <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+    <ul class="carousel-indicators">
+      <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+      <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+      <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+    </ul>
+    <div class="carousel-inner">
+      <div class="carousel-item active fixed-container">
+        <img class="d-block img-fluid cover" layout="fill" src="./images/slide_1.jpg" alt="First slide">
+      </div>
+      <div class="carousel-item fixed-container">
+        <img class="d-block img-fluid cover" layout="fill" src="./images/slide_2.jpg" alt="Second slide">
+      </div>
+      <div class="carousel-item fixed-container">
+        <img class="d-block img-fluid cover" layout="fill" src="./images/slide_3.jpg" alt="Third slide">
+      </div>
+    </div>
+    <a class="carousel-control-prev" href="#carouselExampleIndicators" data-slide="prev">
+      <span class="carousel-control-prev-icon"></span>
+      <!-- <span class="sr-only">Previous</span> -->
+    </a>
+    <a class="carousel-control-next" href="#carouselExampleIndicators" data-slide="next">
+      <span class="carousel-control-next-icon"></span>
+      <!-- <span class="sr-only">Next</span> -->
+    </a>
+  </div>
+  </div>
+  <!-- Shop Men & Women -->
+  <div class="container-fluid row">
+    <div class="col-lg-6 col-sm-6" id="shop_cards">
+      <a href="#women"><img src="./images/shop_women.jpg" class="img-fluid" alt="shop women"></a>
+
+    </div>
+    <div class="col-lg-6 col-sm-6" id="shop_cards">
+      <a href="#men"><img src="./images/shop_men.jpg" class="img-fluid" alt="shop men"></a>
+    </div>
+  </div>
+  <!-- Footer -->
+  <footer class="py-3 bg-light">
+    <div class="container">
+      <p class="m-0 text-center">Copyright &copy; Zora 2019</p>
+    </div>
+  </footer>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </body>
 
 </html>

@@ -1,10 +1,8 @@
-/* =========================================================================
- Building the product catalog */
-var clothesTemplate = Handlebars.compile(
+var productList = Handlebars.compile(
   `
   {{#each clothes}}
-  <div class= col-lg-3>
-    <a href="#"><img class="card-img-top" src={{img}}  alt=""></a>
+  <div class="col-lg-3 col-sm-6 cards">
+    <a href""><img class="card-img-top" src={{img}} alt="products" id="productThumb" data-id="{{clothes_id}}"></a>
     <div class="card-body">
       <h4 class="card-title">
         <a href="#"> {{id}}</a>
@@ -14,6 +12,9 @@ var clothesTemplate = Handlebars.compile(
       </p>
     </div>
     <button type="button" class="btn btn-primary cartButton" id={{id}}>Add to cart</button>
+      <h5>{{name}}</h5>
+      <p class="card-text">{{price}}</p>
+    </div>
   </div>
   {{/each}}
   `
@@ -79,14 +80,41 @@ var cartTemplate = Handlebars.compile(
   </table>
     `
 );
-/* =========================================================================
- */
-const reloadClothes = data => {
-  $("#testing").html(
-    clothesTemplate({
+
+var productInfo = Handlebars.compile(
+  `
+  {{#each clothes}}
+  <div class="col-lg-6 col-md-6">
+  <img class="card-img-top" src="{{img}}" alt="{{name}}">
+  </div>
+  <div class="col-lg-6 col-md-6">
+  <h4>{{name}}</h4></br>
+  <p>{{price}}</p></br>
+  <div class="dropdown text-left" id="selectSize">
+      <button class="btn dropdown-toggle" type="button" id="dropdownMenu2"
+          data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Please select size
+          <span id="selected"></span><span class="caret"></span>
+      </button>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+          <button class="dropdown-item" type="button">XS</button>
+          <button class="dropdown-item" type="button">S</button>
+          <button class="dropdown-item" type="button">M</button>
+          <button class="dropdown-item" type="button">L</button>
+          <button class="dropdown-item" type="button">XL</button>
+      </div>
+  </div>
+</div>
+{{/each}}
+  `
+);
+
+const reloadNotes = data => {
+  console.log("trying");
+  console.log(data);
+  $("#displayBox").html(
+    productList({
       clothes: data
-    })
-  );
+    }));
 };
 const reloadCart = data => {
   $("#cart").html(
@@ -94,6 +122,20 @@ const reloadCart = data => {
       cart: data
     })
   );
+
+const reloadPage = data => {
+  $("#displayBox").html(
+    productInfo({
+      clothes: data
+    }));
+};
+
+const toProduct = data => {
+  console.log('loading suggestions in MAIN')
+  $("#suggestions").html(
+    suggestion({
+      suggestions: data
+    }));
 };
 /* =========================================================================
 Axios requests and event listeners */
@@ -121,7 +163,7 @@ $(() => {
     });
 
   //Adding product to cart function
-  $('#testing').on('click', '.cartButton', function (e) {
+  $('#displayBox').on('click', '.cartButton', function (e) {
     let that = e.currentTarget;
     let productId = $(that).attr('id');
     axios.
@@ -146,13 +188,30 @@ $(() => {
         setTimeout(function(){
           $(".alert").alert('close')
         }, 3000);
+
+      });
+    });
+
+
         
+  $("#displayBox").on('click', 'img', function (e) {
+    // e.preventDefault();
+    console.log(e.currentTarget.getAttribute('data-id'));
+    let id = e.currentTarget.getAttribute('data-id');
+
+    axios
+      .get("/api/productInfo/" + id, { id: id })
+      .then(res => {
+        // console.log(res.data);
+        reloadPage(res.data);
       })
       .catch(err => {
         console.log(err);
       });
   });
 
+
+  
   //Remove product from cart
   $('#cart').on('click', '.removeButton', function (e) {
     let that = e.currentTarget;
@@ -167,4 +226,5 @@ $(() => {
         location.reload(true);
       });
   });
+
 });

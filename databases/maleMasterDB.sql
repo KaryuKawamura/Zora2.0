@@ -7,7 +7,11 @@
 -- img VARCHAR(167,0) NULL
 -- ,0);
 
+<<<<<<< HEAD
 INSERT INTO clothes (name, type_id, style_id, gender_id, price, img, horoscope_id) VALUES
+=======
+INSERT INTO clothes (name, type_id, style_id, gender_id, price, img, horoscope_id,0) VALUES
+>>>>>>> 5578a21472604ea5f2987f7c9717fab140b3d6b4
 ('LookBook DESIGN skinny suit jacket in mid grey',0,2,0,'HKD$634.92','https://images.asos-media.com/products/asos-design-skinny-suit-jacket-in-mid-grey/12224249-1-grey?$n_480w$&wid=476&fit=constrain',0),
 ('LookBook DESIGN denim boilersuit in indigo',0,2,0,'HKD$476.19','https://images.asos-media.com/products/asos-design-denim-boilersuit-in-indigo/11904754-1-indigo?$n_480w$&wid=476&fit=constrain',1),
 ('LookBook DESIGN wedding skinny suit jacket in mink',0,2,0,'HKD$634.92','https://images.asos-media.com/products/asos-design-wedding-skinny-suit-jacket-in-mink/11826471-1-mink?$n_480w$&wid=476&fit=constrain',2),

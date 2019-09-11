@@ -2,7 +2,7 @@
 <link rel="stylesheet" href="/css/stylesheet.css">
 
 <!-- Wrap everything in bootstrap container and row -->
-<div class="container">
+<div class="container" id="home">
 
   <div class="row">
 
@@ -50,16 +50,16 @@
       {{!-- Horizontal product buttons --}}
       <h2>Product</h2>
       <div class="list-group list-group-horizontal">
-        <a href="#" class="list-group-item list-group-item-action">
+        <a href="#" class="list-group-item list-group-item-action active">
           Tops
         </a>
-        <a href="#" class="list-group-item list-group-item-action active">Bottoms</a>
+        <a href="#" class="list-group-item list-group-item-action">Bottoms</a>
         <a href="#" class="list-group-item list-group-item-action">Shoes</a>
         <a href="#" class="list-group-item list-group-item-action">Dresses</a>
       </div>
-      {{!-- Next Section: Cards --}}
 
-      <div id="testing">
+      {{!-- Next Section: Cards --}}
+      <div class="row" id="displayBox">
       </div>
 
       
@@ -67,12 +67,3 @@
     </div>
 
   </div>
-
-</div>
-
-<!-- Footer -->
-<footer class="py-5 bg-dark">
-  <div class="container">
-    <p class="m-0 text-center text-white">Copyright &copy; Your Website 2019</p>
-  </div>
-</footer>
