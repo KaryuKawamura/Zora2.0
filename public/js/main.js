@@ -4,9 +4,6 @@ var productList = Handlebars.compile(
   <div class="col-lg-3 col-sm-6 cards">
     <a href""><img class="card-img-top" src={{img}} alt="products" id="productThumb" data-id="{{clothes_id}}"></a>
     <div class="card-body">
-      <h4 class="card-title">
-        <a href="#"> {{id}}</a>
-      </h4>
       <h5> {{price}}</h5>
       <p class="card-text"> {{name}}
       </p>
@@ -56,7 +53,17 @@ var cartTemplate = Handlebars.compile(
       <td></td>
       <td></td>
       <td>Total:</td>
-      <td>{{#each cart}}{{#if @last}}{{total}}{{/if}}{{/each}}</td>
+
+
+
+
+
+      <td id='total'>{{#each cart}}{{#if @last}}{{total}}{{/if}}{{/each}}</td>
+
+      
+
+
+      
       <td>
       <div style="position: relative; margin:auto;">
        <form action="/charge" method="post">
@@ -80,6 +87,14 @@ var cartTemplate = Handlebars.compile(
   </table>
     `
 );
+
+const reloadNotes = data => {
+  $("#displayBox").html(
+    productList({
+      clothes: data
+    })
+  );
+};
 
 var productInfo = Handlebars.compile(
   `
@@ -107,14 +122,12 @@ var productInfo = Handlebars.compile(
 {{/each}}
   `
 );
-
-const reloadNotes = data => {
-  console.log("trying");
-  console.log(data);
+const reloadPage = data => {
   $("#displayBox").html(
-    productList({
+    productInfo({
       clothes: data
-    }));
+    })
+  );
 };
 const reloadCart = data => {
   $("#cart").html(
@@ -122,85 +135,251 @@ const reloadCart = data => {
       cart: data
     })
   );
+};
 
-const reloadPage = data => {
-  $("#displayBox").html(
+var productListTrend = Handlebars.compile(
+  `
+  {{#each clothes}}
+  <div class="col-lg-3 col-sm-6 cards">
+    <a href""><img class="card-img-top" src={{img}} alt="products" id="productThumb" data-id="{{clothes_id}}"></a>
+    <div class="card-body">
+      <h4 class="card-title">
+        <a href="#"> {{id}}</a>
+      </h4>
+      <h5> {{price}}</h5>
+      <p class="card-text"> {{name}}
+      </p>
+    </div>
+    <button type="button" class="btn btn-primary cartButton" id={{id}}>Add to cart</button>
+      <h5>{{name}}</h5>
+      <p class="card-text">{{price}}</p>
+    </div>
+  </div>
+  {{/each}}
+    `
+);
+const reloadTrend = data => {
+  let realDataTrend = [];
+  data.forEach(element => {
+    if (element.style_id == 3) {
+      realDataTrend.push(element);
+    }
+  });
+  $("#displayBoxTrend").html(
+    productListTrend({
+      clothes: realDataTrend
+    })
+  );
+  return realDataTrend;
+};
+const reloadTrendPage = data => {
+  $("#displayBoxTrend").html(
     productInfo({
       clothes: data
-    }));
+    })
+  );
+};
+var productListCasual = Handlebars.compile(
+  `
+  {{#each clothes}}
+  <div class="col-lg-3 col-sm-6 cards">
+    <a href""><img class="card-img-top" src={{img}} alt="products" id="productThumb" data-id="{{clothes_id}}"></a>
+    <div class="card-body">
+      <h5>{{name}}</h5>
+      <p class="card-text">{{price}}</p>
+    </div>
+  </div>
+  {{/each}}
+    `
+);
+const reloadCasual = data => {
+  let realDataCasual = [];
+  data.forEach(element => {
+    if (element.style_id == 1) {
+      realDataCasual.push(element);
+    }
+  });
+  $("#displayBoxCasual").html(
+    productListCasual({
+      clothes: realDataCasual
+    })
+  );
+};
+
+const reloadCasualPage = data => {
+  $("#displayBoxCasual").html(
+    productInfo({
+      clothes: data
+    })
+  );
+};
+
+var productListFormal = Handlebars.compile(
+  `
+  {{#each clothes}}
+  <div class="col-lg-3 col-sm-6 cards">
+    <a href""><img class="card-img-top" src={{img}} alt="products" id="productThumb" data-id="{{clothes_id}}"></a>
+    <div class="card-body">
+      <h5>{{name}}</h5>
+      <p class="card-text">{{price}}</p>
+    </div>
+  </div>
+  {{/each}}
+    `
+);
+const reloadFormal = data => {
+  let realDataFormal = [];
+  data.forEach(element => {
+    if (element.style_id == 0) {
+      realDataFormal.push(element);
+    }
+  });
+  $("#displayBoxFormal").html(
+    productListFormal({
+      clothes: realDataFormal
+    })
+  );
+};
+const reloadFormalPage = data => {
+  $("#displayBoxFormal").html(
+    productInfo({
+      clothes: data
+    })
+  );
+};
+var productListOut = Handlebars.compile(
+  `
+  {{#each clothes}}
+  <div class="col-lg-3 col-sm-6 cards">
+    <a href""><img class="card-img-top" src={{img}} alt="products" id="productThumb" data-id="{{clothes_id}}"></a>
+    <div class="card-body">
+      <h5>{{name}}</h5>
+      <p class="card-text">{{price}}</p>
+    </div>
+  </div>
+  {{/each}}
+    `
+);
+
+const reloadOut = data => {
+  let realDataOut = [];
+  data.forEach(element => {
+    if (element.style_id == 2) {
+      realDataOut.push(element);
+    }
+  });
+  $("#displayBoxOut").html(
+    productListOut({
+      clothes: realDataOut
+    })
+  );
+};
+const reloadOutPage = data => {
+  $("#displayBoxOut").html(
+    productInfo({
+      clothes: data
+    })
+  );
 };
 
 const toProduct = data => {
-  console.log('loading suggestions in MAIN')
   $("#suggestions").html(
     suggestion({
       suggestions: data
-    }));
+    })
+  );
 };
 /* =========================================================================
 Axios requests and event listeners */
+//Getting user cart info
 $(() => {
-
- 
-  //Get clothes catalog
   axios
-    .get("/api/clothes/")
+    .get("/api/clothes")
     .then(res => {
-      reloadClothes(res.data);
+      reloadNotes(res.data);
     })
     .catch(err => {
       console.log(err);
     });
-
-  //Getting user cart info
   axios
-    .get("/api/cart/")
+    .get("/api/cart")
     .then(res => {
       reloadCart(res.data);
     })
     .catch(err => {
       console.log(err);
     });
+  axios
+    .get("/api/clothes/trend")
+    .then(res => {
+      reloadTrend(res.data);
+    })
+    .catch(err => {
+      console.log(err);
+    });
+  axios
+    .get("/api/clothes/trend")
+    .then(res => {
+      reloadCasual(res.data);
+    })
+    .catch(err => {
+      console.log(err);
+    });
+  axios
+    .get("/api/clothes/trend")
+    .then(res => {
+      reloadFormal(res.data);
+    })
+    .catch(err => {
+      console.log(err);
+    });
+  axios
+    .get("/api/clothes/trend")
+    .then(res => {
+      reloadOut(res.data);
+    })
+    .catch(err => {
+      console.log(err);
+    });
 
   //Adding product to cart function
-  $('#displayBox').on('click', '.cartButton', function (e) {
+  $("#displayBox").on("click", ".cartButton", function (e) {
     let that = e.currentTarget;
-    let productId = $(that).attr('id');
-    axios.
-    post("/api/cart/", {
+    let productId = $(that).attr("id");
+    axios
+      .post("/api/cart/", {
         clothes_id: productId
       })
       .then(res => {
-        if (res.data.status == 'success') {
-          $('#message').html(
-            '<br><div class="alert alert-success fade show" role="alert">'
-            + res.data.msg +
-            '</div>'
+        if (res.data.status == "success") {
+          $("#message").html(
+            '<br><div class="alert alert-success fade show" role="alert">' +
+            res.data.msg +
+            "</div>"
           );
-        } else if (res.data.status == 'fail') {
-          $('#message').html(
+        } else if (res.data.status == "fail") {
+          $("#message").html(
             '<br><div class="alert alert-danger fade show" role="alert">' +
             res.data.msg +
-            '</div>'
+            "</div>"
           );
         }
 
-        setTimeout(function(){
-          $(".alert").alert('close')
+        setTimeout(function () {
+          $(".alert").alert("close");
         }, 3000);
-
       });
-    });
+  });
 
-
-        
-  $("#displayBox").on('click', 'img', function (e) {
+  $("#displayBox").on("click", "img", function (e) {
     // e.preventDefault();
-    console.log(e.currentTarget.getAttribute('data-id'));
-    let id = e.currentTarget.getAttribute('data-id');
+    console.log(e.currentTarget.getAttribute("data-id"));
+    let id = e.currentTarget.getAttribute("data-id");
 
     axios
-      .get("/api/productInfo/" + id, { id: id })
+      .get("/api/productInfo/" + id, {
+        id: id
+      })
       .then(res => {
         // console.log(res.data);
         reloadPage(res.data);
@@ -209,22 +388,125 @@ $(() => {
         console.log(err);
       });
   });
+  $("#productStyle").on("click", "a", function (e) {
+    // e.preventDefault();
+    console.log(e.currentTarget.getAttribute("data-id"));
+    let id = e.currentTarget.getAttribute("data-id");
 
-
-  
-  //Remove product from cart
-  $('#cart').on('click', '.removeButton', function (e) {
-    let that = e.currentTarget;
-    let productId = $(that).attr('id');
-    axios.
-    delete("/api/cart/" + productId)
-      .then((res) => {
-        reloadCart(res.data);
-      }).catch((e) => {
-        alert(e);
-      }).finally(() => {
-        location.reload(true);
+    axios
+      .get("/api/productTypeInfo/" + id, {
+        id: id
+      })
+      .then(res => {
+        // console.log(res.data);
+        reloadNotes(res.data);
+      })
+      .catch(err => {
+        console.log(err);
       });
   });
 
+  $("#productType").on("click", "button", function (e) {
+    // e.preventDefault();
+    console.log(e.currentTarget.getAttribute("data-id"));
+    let id = e.currentTarget.getAttribute("data-id");
+
+    axios
+      .get("/api/productTypeInfo/" + id, {
+        id: id
+      })
+      .then(res => {
+        // console.log(res.data);
+        reloadNotes(res.data);
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  });
+
+  $("#displayBoxTrend").on("click", "img", function (e) {
+    // e.preventDefault();
+    console.log(e.currentTarget.getAttribute("data-id"));
+    let id = e.currentTarget.getAttribute("data-id");
+
+    axios
+      .get("/api/productInfo/" + id, {
+        id: id
+      })
+      .then(res => {
+        // console.log(res.data);
+        reloadTrendPage(res.data);
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  });
+  $("#displayBoxFormal").on("click", "img", function (e) {
+    // e.preventDefault();
+    console.log(e.currentTarget.getAttribute("data-id"));
+    let id = e.currentTarget.getAttribute("data-id");
+
+    axios
+      .get("/api/productInfo/" + id, {
+        id: id
+      })
+      .then(res => {
+        // console.log(res.data);
+        reloadFormalPage(res.data);
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  });
+  $("#displayBoxOut").on("click", "img", function (e) {
+    // e.preventDefault();
+    console.log(e.currentTarget.getAttribute("data-id"));
+    let id = e.currentTarget.getAttribute("data-id");
+
+    axios
+      .get("/api/productInfo/" + id, {
+        id: id
+      })
+      .then(res => {
+        // console.log(res.data);
+        reloadOutPage(res.data);
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  });
+  $("#displayBoxCasual").on("click", "img", function (e) {
+    // e.preventDefault();
+    console.log(e.currentTarget.getAttribute("data-id"));
+    let id = e.currentTarget.getAttribute("data-id");
+
+    axios
+      .get("/api/productInfo/" + id, {
+        id: id
+      })
+      .then(res => {
+        // console.log(res.data);
+        reloadCasualPage(res.data);
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  });
+
+  //Remove product from cart
+  $("#cart").on("click", ".removeButton", function (e) {
+    let that = e.currentTarget;
+    let productId = $(that).attr("id");
+    axios
+      .delete("/api/cart/" + productId)
+      .then(res => {
+        reloadCart(res.data);
+      })
+      .catch(e => {
+        alert(e);
+      })
+      .finally(() => {
+        location.reload(true);
+      });
+  });
 });
