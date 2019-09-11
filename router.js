@@ -64,8 +64,17 @@ module.exports = express => {
     // console.log(req.session.id)
     res.render("userOut", {
       name: req.user.name,
-      horoscope: req.user.horoscope
+      horoscope: req.user.horoscope,
+      cartCounter: 3
     });
+  });
+
+  router.get("/cart", (req, res) => {
+    res.render("cart");
+  });
+
+  router.get("/error", (req, res) => {
+    res.send("You are not logged in!");
   });
 
   router.get("/error", (req, res) => {

@@ -7,23 +7,25 @@ const router = require("./router")(express);
 const morgan = require("morgan");
 const hb = require("express-handlebars");
 
-// All Routes
-const ClothesService = require("./ClothesService");
-const ClothesRouter = require("./ClothesRouter");
+const ClothesService = require("./service/ClothesService");
+const ClothesRouter = require("./router/ClothesRouter");
 
-const ProductService = require("./ProductService");
-const ProductRouter = require("./ProductRouter");
+const CartService = require("./service/CartService");
+const CartRouter = require("./router/CartRouter");
 
-const ClothesTrendService = require("./ClothesTrendService");
-const ClothesTrendRouter = require("./ClothesTrendRouter");
+const knexConfig = require("./knexfile").development;
+const knex = require("knex")(knexConfig);
 
-const ProductTypeService = require("./ProductTypeService");
-const ProductTypeRouter = require("./ProductTypeRouter");
+const ProductService = require("./service/ProductService");
+const ProductRouter = require("./router/ProductRouter");
+
+const ClothesTrendService = require("./service/ClothesTrendService");
+const ClothesTrendRouter = require("./router/ClothesTrendRouter");
+
+const ProductTypeService = require("./service/ProductTypeService");
+const ProductTypeRouter = require("./router/ProductTypeRouter");
 
 require("dotenv").config();
-
-const knexConfig = require("./knexfile")["development"];
-const knex = require("knex")(knexConfig);
 
 app.engine("handlebars", hb({ defaultLayout: "main" }));
 
@@ -40,19 +42,26 @@ app.use(
   })
 );
 
+app.use(
+  bodyParser.urlencoded({
+    extended: false
+  })
+);
+
+app.use(bodyParser.json());
+
+app.use(express.static("public"));
+
+setupPassport(app);
+
 const clothesService = new ClothesService(knex);
+const cartService = new CartService(knex);
 const productService = new ProductService(knex);
 const productTypeService = new ProductTypeService(knex);
 const clothesTrendService = new ClothesTrendService(knex);
 
-app.use(express.static("public"));
-
-app.use(bodyParser());
-
-setupPassport(app);
-
 app.use("/", router);
-
+app.use("/api/cart/", new CartRouter(cartService).router());
 app.use("/api/clothes", new ClothesRouter(clothesService).router());
 app.use("/api/productInfo", new ProductRouter(productService).router());
 app.use(

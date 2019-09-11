@@ -8,9 +8,9 @@ CREATE TABLE UsersTable
 
 CREATE TABLE horoscope
 (
-"id" serial primary key,
-"horoscope" varchar,
-)
+  "id" serial primary key,
+  "horoscope" varchar
+);
 
 CREATE TABLE fashionStyles
 (
@@ -28,7 +28,7 @@ CREATE TABLE clothes
   "gender_id" int,
   "price" varchar,
   "img" varchar,
-  "horoscope" varchar
+  "horoscope_id" varchar
 );
 
 
@@ -44,7 +44,7 @@ CREATE TABLE cart
   "cart_id" int,
   "userstable_id" int,
   "clothes_id" int,
-  "price" int
+  "price" varchar
 );
 
 CREATE TABLE purchase

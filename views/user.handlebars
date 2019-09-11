@@ -10,7 +10,21 @@
 
     {{!-- Sidebar section --}}
     <div class="col-lg-3">
+
+      {{!-- Gender toggle --}}
+
+      <div class="row d-flex justify-content-center">
+        <span style="margin-right: 6px">Male</span>
+        <div class="custom-control custom-switch">
+          <input type="checkbox" class="custom-control-input" id="customSwitch1">
+          <label class="custom-control-label" for="customSwitch1">Female</label>
+        </div>
+      </div>
+
+      <br>
+
       {{!-- Styles buttons --}}
+
       <h2>Styles</h2>
       <div id="productStyle" class="list-group">
         <a href="http://localhost:8080/secret" id="productStyle" class="list-group-item list-group-item-action active">
@@ -26,7 +40,12 @@
           class="list-group-item list-group-item-action">Going-out-out</a>
       </div>
 
+      <div id="message">
+      </div>
+
     </div>
+
+
 
     {{!-- Content section --}}
     <div class="col-lg-9">
@@ -44,6 +63,8 @@
       {{!-- Next Section: Cards --}}
       <div class="row" id="displayBox">
       </div>
+
+
 
     </div>
 

@@ -1,10 +1,8 @@
 const express = require("express");
-
 class ClothesRouter {
   constructor(clothesService) {
     this.clothesService = clothesService;
   }
-
   router() {
     let router = express.Router();
     router.get("/", this.get.bind(this));

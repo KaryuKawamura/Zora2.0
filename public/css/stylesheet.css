@@ -13,7 +13,7 @@ nav #logo, #horoscopeIcon {
 }
 
 #home .container {
-  margin-top: 40px;
+  margin-top: 40 px;
   margin-bottom: 40px;
 }
 
@@ -80,4 +80,8 @@ nav #logo, #horoscopeIcon {
   #shop_cards {
     width: 100%;
   }
+}
+
+#cartThumbnail {
+  height: 150px;
 }
