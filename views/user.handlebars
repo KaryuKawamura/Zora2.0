@@ -12,14 +12,18 @@
     <div class="col-lg-3">
       {{!-- Styles buttons --}}
       <h2>Styles</h2>
-      <div class="list-group">
-        <a href="#" class="list-group-item list-group-item-action active">
+      <div id="productStyle" class="list-group">
+        <a href="http://localhost:8080/secret" id="productStyle" class="list-group-item list-group-item-action active">
           Horoscope Highlights
         </a>
-        <a href="#" class="list-group-item list-group-item-action">Trending</a>
-        <a href="#" class="list-group-item list-group-item-action">Formal</a>
-        <a href="#" class="list-group-item list-group-item-action">Casual</a>
-        <a href="#" class="list-group-item list-group-item-action">Going-out-out</a>
+        <a href="http://localhost:8080/secret_trend" data-id="3" id="productStyle"
+          class="list-group-item list-group-item-action">Trending</a>
+        <a href="http://localhost:8080/secret_formal" data-id="0" id="productStyle"
+          class="list-group-item list-group-item-action">Formal</a>
+        <a href="http://localhost:8080/secret_casual" data-id="1" id="productStyle"
+          class="list-group-item list-group-item-action">Casual</a>
+        <a href="http://localhost:8080/secret_out" data-id="2" id="productStyle"
+          class="list-group-item list-group-item-action">Going-out-out</a>
       </div>
 
     </div>
@@ -28,13 +32,13 @@
     <div class="col-lg-9">
       {{!-- Horizontal product buttons --}}
       <h2>Product</h2>
-      <div class="list-group list-group-horizontal">
-        <a href="#" class="list-group-item list-group-item-action active">
+      <div id="productType" class="list-group list-group-horizontal">
+        <button data-id="2" class="list-group-item list-group-item-action active">
           Tops
-        </a>
-        <a href="#" class="list-group-item list-group-item-action">Bottoms</a>
-        <a href="#" class="list-group-item list-group-item-action">Shoes</a>
-        <a href="#" class="list-group-item list-group-item-action">Dresses</a>
+        </button>
+        <button data-id="3" class="list-group-item list-group-item-action">Bottoms</button>
+        <button data-id="1" class="list-group-item list-group-item-action">Shoes</button>
+        <button data-id="0" class="list-group-item list-group-item-action">Dresses/Suits</button>
       </div>
 
       {{!-- Next Section: Cards --}}

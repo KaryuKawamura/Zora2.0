@@ -1,8 +1,8 @@
 const express = require("express");
 
-class ClothesRouter {
-  constructor(clothesService) {
-    this.clothesService = clothesService;
+class ClothesTrendRouter {
+  constructor(clothesTrendService) {
+    this.clothesTrendService = clothesTrendService;
   }
 
   router() {
@@ -13,11 +13,11 @@ class ClothesRouter {
 
   get(req, res) {
     console.log("I am routing");
-    return this.clothesService
+    return this.clothesTrendService
       .list(req.user.id)
       .then(clothes => res.json(clothes))
       .catch(err => res.status(500).json(err));
   }
 }
 
-module.exports = ClothesRouter;
+module.exports = ClothesTrendRouter;

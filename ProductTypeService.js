@@ -1,4 +1,4 @@
-class ProductService {
+class ProductTypeService {
   constructor(knex) {
     this.knex = knex;
   }
@@ -7,7 +7,10 @@ class ProductService {
     let query = this.knex
       .select("name", "price", "img")
       .from("clothes")
-      .where({ clothes_id: id });
+      .where({
+        horoscope_id: 0,
+        type_id: id
+      });
     // console.log(query);
     return query.then(data => {
       // console.log(data);
@@ -16,4 +19,4 @@ class ProductService {
   }
 }
 
-module.exports = ProductService;
+module.exports = ProductTypeService;
