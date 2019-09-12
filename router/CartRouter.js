@@ -24,13 +24,13 @@ class CartRouter {
 
   post(req, res) {
     return this.cartService
-    .add(req.body.clothes_id, req.body.quantity, req.session.passport.user)
+    .add(req.body.clothes_id, req.body.quantity, req.body.size, req.session.passport.user)
     .then((msg) => res.json(msg))
     .catch((err) => res.status(500).json(err));
   }
 
   put(req, res) {
-    return this.cartService.update(req.body.clothes_id, req.body.quantity, req.session.passport.user)
+    return this.cartService.update(req.body.clothes_id, req.body.quantity, req.body.size, req.session.passport.user)
       .then((cart) => res.json(cart))
       .catch((err) => res.status(500).json(err));
   }

@@ -8,27 +8,27 @@ var productList = Handlebars.compile(
       <p class="card-text"> {{name}}
       </p>
     </div>
+
     <div class="form-group">
       <label>Quantity:</label>
         <input type="number" class="form-control" href={{id}} value="1" min="1">
     </div>
 
     <br>
-
-
-
-
     <div class="dropdown">
     <label>Size:</label>
-  <button class="btn btn-link dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">S
-   
+
+
+  <button class="btn btn-link dropdown-toggle" type="button" href={{id}}ss data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">S
   </button>
-  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-    <a class="dropdown-item" href="#">XS</a>
-    <a class="dropdown-item" href="#">S</a>
-    <a class="dropdown-item" href="#">M</a>
-    <a class="dropdown-item" href="#">L</a>
-    <a class="dropdown-item" href="#">XL</a>
+
+
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" id={{id}}>
+    <a class="dropdown-item">XS</a>
+    <a class="dropdown-item">S</a>
+    <a class="dropdown-item">M</a>
+    <a class="dropdown-item">L</a>
+    <a class="dropdown-item">XL</a>
   </div>
 
 
@@ -37,6 +37,8 @@ var productList = Handlebars.compile(
 </div>
 
 <br>
+
+  <div>
 
     <button type="button" class="btn btn-primary cartButton" id={{id}}>Add to cart</button>
       <h5>{{name}}</h5>
@@ -70,7 +72,44 @@ var cartTemplate = Handlebars.compile(
   <tr>
       <th scope="row"><img src='{{img}}' id='cartThumbnail'></th>
       <td>{{name}}</td>
-      <td>{{size}}</td>
+
+
+
+      <td><button class="btn btn-link dropdown-toggle" type="button" href={{id}}ss data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{size}}
+  </button>
+
+
+
+
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" id={{id}}>
+    <a class="dropdown-item">XS</a>
+    <a class="dropdown-item">S</a>
+    <a class="dropdown-item">M</a>
+    <a class="dropdown-item">L</a>
+    <a class="dropdown-item">XL</a>
+  </div>
+  
+  
+  </td>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
       <td>
         <div class="form-group">
         <input type="number" class="form-control cartQuantity" id={{id}} min="1" value="{{quantity}}">
@@ -123,32 +162,82 @@ const reloadNotes = data => {
   );
 };
 
+
+
+
+
 var productInfo = Handlebars.compile(
   `
   {{#each clothes}}
   <div class="col-lg-6 col-md-6">
   <img class="card-img-top" src="{{img}}" alt="{{name}}">
   </div>
+
+
   <div class="col-lg-6 col-md-6">
-  <h4>{{name}}</h4></br>
-  <p>{{price}}</p></br>
-  <div class="dropdown text-left" id="selectSize">
-      <button class="btn dropdown-toggle" type="button" id="dropdownMenu2"
-          data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <span id="selected">Please select size</span><span class="caret"></span>
-      </button>
-      <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-          <button class="dropdown-item" type="button">XS</button>
-          <button class="dropdown-item" type="button">S</button>
-          <button class="dropdown-item" type="button">M</button>
-          <button class="dropdown-item" type="button">L</button>
-          <button class="dropdown-item" type="button">XL</button>
-      </div>
-  </div>
+
+
+
+
+
+
+      <h4>{{id}}</h4></br>
+
+
+
+
+
+
+
+      <h4>{{name}}</h4></br>
+      <p>{{price}}</p></br>
+
+
+      <div class="form-group">
+  <label>Quantity:</label>
+  <input type="number" class="form-control" href={{id}} value="1" min="1">
 </div>
+<br>
+<div class="dropdown">
+  <label>Size:</label>
+
+  <button class="btn btn-link dropdown-toggle" type="button" href={{id}}ss data-toggle="dropdown" aria-haspopup="true"
+    aria-expanded="false">S
+  </button>
+
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" id={{id}}>
+    <a class="dropdown-item">XS</a>
+    <a class="dropdown-item">S</a>
+    <a class="dropdown-item">M</a>
+    <a class="dropdown-item">L</a>
+    <a class="dropdown-item">XL</a>
+  </div>
+
+</div>
+<br>
+<div>
+  <button type="button" class="btn btn-primary cartButton" id={{id}}>Add to cart</button>
+</div>
+
+
+
+  </div>
+
+
+
 {{/each}}
   `
 );
+
+
+
+
+
+
+
+
+
+
 const reloadPage = data => {
   $("#displayBox").html(
     productInfo({
@@ -321,19 +410,6 @@ Axios requests and event listeners */
 //Getting user cart info
 $(() => {
 
-
-
-  
-
-  
-
-  
-
-
-
-
-
-
   axios
     .get("/api/clothes")
     .then(res => {
@@ -390,7 +466,7 @@ $(() => {
     let productQuantity = $(that).val();
     let productId = $(that).attr("id");
 
-    // console.log(productId, productQuantity);
+    console.log(productId, productQuantity);
 
     axios
       .put("/api/cart/", {
@@ -403,25 +479,69 @@ $(() => {
   });
 
 
+
+  $("#displayBox, #displayBoxTrend, #displayBoxOut, #displayBoxFormal, #displayBoxCasual").on("click", ".dropdown-item", function (e) {
+
+    let size;
+    let that = e.currentTarget;
+    size = $(that).text();
+
+    productId = $(that).parent().attr("id");
+
+    $(`[href=${productId}ss]`).text(size)
+
+    console.log(productId)
+
+  });
+
+
+
+  $("#cart").on("click", ".dropdown-item", function (e) {
+
+    let size;
+    let that = e.currentTarget;
+    size = $(that).text();
+
+    productId = $(that).parent().attr("id");
+
+    $(`[href=${productId}ss]`).text(size)
+
+    console.log(productId)
+
+
+    axios
+      .put("/api/cart/", {
+        clothes_id: productId,
+        size: size
+      })
+      .finally(() => {
+        location.reload(true);
+      });
+
+  });
+
+
+
+
   //Adding product to cart function
-  $("#displayBox").on("click", ".cartButton", function (e) {
+  $("#displayBox, #displayBoxTrend, #displayBoxOut, #displayBoxFormal, #displayBoxCasual").on("click", ".cartButton", function (e) {
     let that = e.currentTarget;
     let productId = $(that).attr("id");
     let productQuantity = $(`[href=${productId}]`).val();
+    let productSize = $(`[href=${productId}ss]`).text();
 
-
-
-
-    // console.log(productId, productQuantity)
+    // console.log(productSize);
+    console.log(productId, productQuantity, productSize)
 
     axios
       .post("/api/cart/", {
         clothes_id: productId,
-        quantity: productQuantity
+        quantity: productQuantity,
+        size: productSize
       })
       .then(res => {
         // console.log(res.data.quantity)
-        
+
         if (res.data.status == "success") {
 
 
@@ -430,12 +550,12 @@ $(() => {
             res.data.msg +
             "</div>"
 
-            
+
           );
 
-           setTimeout(function () {
-             location.reload(true);
-           }, 1000);
+          setTimeout(function () {
+            location.reload(true);
+          }, 1000);
 
 
         } else if (res.data.status == "fail") {
@@ -450,9 +570,8 @@ $(() => {
         }, 500);
       })
       .then(() => {
-        
-      })
-      ;
+
+      });
   });
 
   $("#displayBox").on("click", "img", function (e) {
@@ -472,6 +591,7 @@ $(() => {
         console.log(err);
       });
   });
+
   $("#productStyle").on("click", "a", function (e) {
     // e.preventDefault();
     console.log(e.currentTarget.getAttribute("data-id"));

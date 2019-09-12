@@ -45,7 +45,8 @@ CREATE TABLE cart
   "userstable_id" int,
   "clothes_id" int,
   "price" varchar,
-  "quantity" int
+  "quantity" int,
+  "size" varchar
 );
 
 CREATE TABLE purchase
