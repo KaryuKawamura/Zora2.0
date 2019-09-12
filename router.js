@@ -86,8 +86,8 @@ module.exports = express => {
         horoscope: req.user.horoscope,
         totalPrice: response[0].totalPrice
       });
+      console.log(response[0].totalPrice);
     });
-    console.log("CARTCARTCART");
   });
 
   router.get("/error", (req, res) => {

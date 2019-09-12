@@ -26,7 +26,7 @@ class CartService {
 
 
     let query = this.knex
-      .select('clothes.clothes_id', 'clothes.price', 'quantity', 'img', 'name')
+      .select('clothes.clothes_id', 'clothes.price', 'quantity', 'img', 'name', 'size')
       .from('cart')
       .join('clothes', {
         'clothes.clothes_id': 'cart.clothes_id'
@@ -60,7 +60,9 @@ class CartService {
         quantity: row.quantity,
         totalQuantity: quantityTotal,
         price: row.price.split('$').pop(),
-        totalPrice: priceTotal
+        totalPrice: priceTotal,
+        size: row.size
+
 
 
       }));
@@ -75,7 +77,7 @@ class CartService {
   2) the currently logged-in user's username
   and adds items to the cart table */
 
-  add(clickedClothesId, clickedClothesQuantity, userName) {
+  add(clickedClothesId, clickedClothesQuantity, clickedClothesSize, userName) {
     //Query price of the clicked item using id
     let price;
     let res = {
@@ -103,6 +105,7 @@ class CartService {
           return this.knex.insert({
             clothes_id: clickedClothesId,
             quantity: clickedClothesQuantity,
+            size: clickedClothesSize,
             userstable_id: userId,
             price: price
           }).into('cart').then(() => {
@@ -122,7 +125,7 @@ class CartService {
 
   /* The user is able to update the quantities of the products in their cart  */
 
-  update(clickedClothesId, clickedClothesQuantity, userName) {
+  update(clickedClothesId, clickedClothesQuantity, clickedClothesSize, userName) {
 
     this.queryUserId(userName);
 
@@ -136,7 +139,8 @@ class CartService {
         return this.knex('cart')
           .where('clothes_id', clickedClothesId)
           .update({
-            quantity: clickedClothesQuantity
+            quantity: clickedClothesQuantity,
+            size: clickedClothesSize
           });
       } else {
         throw new Error(`Cannot update quantity!`)

@@ -15,18 +15,18 @@ var productList = Handlebars.compile(
     <br>
     <div class="dropdown">
     <label>Size:</label>
-  <button class="btn btn-link dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">S
-   
+  <button class="btn btn-link dropdown-toggle" type="button" href={{id}}ss data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">S
   </button>
-  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-    <a class="dropdown-item" href="#">XS</a>
-    <a class="dropdown-item" href="#">S</a>
-    <a class="dropdown-item" href="#">M</a>
-    <a class="dropdown-item" href="#">L</a>
-    <a class="dropdown-item" href="#">XL</a>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" id={{id}}>
+    <a class="dropdown-item">XS</a>
+    <a class="dropdown-item">S</a>
+    <a class="dropdown-item">M</a>
+    <a class="dropdown-item">L</a>
+    <a class="dropdown-item">XL</a>
   </div>
 </div>
 <br>
+  <div>
     <button type="button" class="btn btn-primary cartButton" id={{id}}>Add to cart</button>
     </div>
   </div>
@@ -39,8 +39,6 @@ var cartTemplate = Handlebars.compile(
   //Table headers and structure comes first, then the actual content follows
   `
   <h1> Your Shopping Cart </h1>
-
-
   <table class="table table-hover">
   <thead>
     <tr>
@@ -57,7 +55,16 @@ var cartTemplate = Handlebars.compile(
   <tr>
       <th scope="row"><img src='{{img}}' id='cartThumbnail'></th>
       <td>{{name}}</td>
-      <td>{{size}}</td>
+      <td><button class="btn btn-link dropdown-toggle" type="button" href={{id}}ss data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{size}}
+  </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" id={{id}}>
+    <a class="dropdown-item">XS</a>
+    <a class="dropdown-item">S</a>
+    <a class="dropdown-item">M</a>
+    <a class="dropdown-item">L</a>
+    <a class="dropdown-item">XL</a>
+  </div>
+  </td>
       <td>
         <div class="form-group">
         <input type="number" class="form-control cartQuantity" id={{id}} min="1" value="{{quantity}}">
@@ -70,26 +77,29 @@ var cartTemplate = Handlebars.compile(
   <tr class="table-active">
       <td></td>
       <td></td>
-      <td></td>
-      
+      <td></td>     
       <td>Grand Total:</td>
-      
-    
-
-      <td id='total'>{{#each cart}}{{#if @last}}{{totalPrice}}{{/if}}{{/each}}</td>
-     
+      <td>{{#each cart}}{{#if @last}}{{totalPrice}}{{/if}}{{/each}}</td>    
       <td>
       <div style="position: relative; margin:auto;">
        <form action="/charge" method="post">
        <article>
           <label>Checkout</this></label>
         </article>
+        <script
+        src="//checkout.stripe.com/v2/checkout.js"
+        class="stripe-button"
+        data-key="<%= keyPublishable %>"
+        data-locale="auto"
+        data-description="Checkout form"
+        data-amount="{{#each cart}}{{#if @last}}{{total}}{{/if}}{{/each}}"
+        >
+        </script>
         </form>
         </div>
       </td>
     </tr>
   </tbody>
-
   </table>
     `
 );
@@ -100,22 +110,32 @@ var productInfo = Handlebars.compile(
   <img class="card-img-top" src="{{img}}" alt="{{name}}">
   </div>
   <div class="col-lg-6 col-md-6">
-  <h4>{{name}}</h4></br>
-  <p>{{price}}</p></br>
-  <div class="dropdown text-left" id="selectSize">
-      <button class="btn dropdown-toggle" type="button" id="dropdownMenu2"
-          data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <span id="selected">Please select size</span><span class="caret"></span>
-      </button>
-      <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-          <button class="dropdown-item" type="button">XS</button>
-          <button class="dropdown-item" type="button">S</button>
-          <button class="dropdown-item" type="button">M</button>
-          <button class="dropdown-item" type="button">L</button>
-          <button class="dropdown-item" type="button">XL</button>
-      </div>
+      <h4>{{id}}</h4></br>
+      <h4>{{name}}</h4></br>
+      <p>{{price}}</p></br>
+      <div class="form-group">
+  <label>Quantity:</label>
+  <input type="number" class="form-control" href={{id}} value="1" min="1">
+</div>
+<br>
+<div class="dropdown">
+  <label>Size:</label>
+  <button class="btn btn-link dropdown-toggle" type="button" href={{id}}ss data-toggle="dropdown" aria-haspopup="true"
+    aria-expanded="false">S
+  </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" id={{id}}>
+    <a class="dropdown-item">XS</a>
+    <a class="dropdown-item">S</a>
+    <a class="dropdown-item">M</a>
+    <a class="dropdown-item">L</a>
+    <a class="dropdown-item">XL</a>
   </div>
 </div>
+<br>
+<div>
+  <button type="button" class="btn btn-primary cartButton" id={{id}}>Add to cart</button>
+</div>
+  </div>
 {{/each}}
   `
 );
