@@ -14,30 +14,31 @@
   {{!-- Top Navigation Bar --}}
   <nav class="navbar navbar-light bg-light ">
     {{!-- Logo --}}
-    <a class="navbar-brand" href="/secret"><img src="/images/logo.png" class="d-inline-block align-center" alt="" id="logo">
-    Zora
+    <a class="navbar-brand" href="/secret"><img src="/images/logo.png" class="d-inline-block align-center" alt=""
+        id="logo">
+      Zora
     </a>
     {{!-- User horoscope icon --}}
     <div class="justify-content-end">
-    <img src="/images/taurus.png" class="ml-auto" alt="" id="horoscopeIcon">
-    {{!-- Greeting --}}
-    <span class="navbar-text" id="greeting">
-    Welcome back {{name}}, The Beautiful {{horoscope}}
-    </span>
-    {{!-- Cart --}}
-    <a href="/cart">
-    <button type="button" class="btn btn-primary">
-      Cart
-      <span class="badge badge-light"></span>
-    </button></a>
+      <img src="/images/taurus.png" class="ml-auto" alt="" id="horoscopeIcon">
+      {{!-- Greeting --}}
+      <span class="navbar-text" id="greeting">
+        Welcome back {{name}}, The Beautiful {{horoscope}}
+      </span>
+      {{!-- Cart --}}
+      <a href="/cart">
+        <button type="button" class="btn btn-primary">
+          Cart
+          <span class="badge badge-light"></span>
+        </button></a>
 
-    
-    {{!-- Logout --}}
-    <a href="/logout" id="logout">
-      <button class="btn btn-outline-success" type="submit">
-        Logout
-      </button>
-    </a>
+
+      {{!-- Logout --}}
+      <a href="/logout" id="logout">
+        <button class="btn btn-outline-success" type="submit">
+          Logout
+        </button>
+      </a>
     </div>
 
   </nav>
@@ -46,6 +47,7 @@
   {{{body}}}
 
   {{>footer}}
+
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
     integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
     crossorigin="anonymous"></script>
@@ -59,17 +61,11 @@
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
   <script src="/js/main.js"></script>
   <script>
+
     $(() => {
 
-      
-{{!--   
 
-     $("#displayBox").on('click', '.dropdown-menu button', (e) => {
-       console.log($(e.currentTarget).text())
 
-        $('#selected').text($(e.currentTarget).text());
-
-      }); --}}
 
 
       //Updating cart badge functionality
@@ -86,13 +82,14 @@
         });
 
 
-      
-  
-      
+
+
+
     });
 
 
   </script>
+
 </body>
 
 </html>

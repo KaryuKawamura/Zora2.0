@@ -1,5 +1,13 @@
 const passport = require("passport");
+const axios = require("axios");
 const dateToHoroscope = require("./dateToHoroscope");
+require("dotenv").config();
+
+const knexConfig = require("./knexfile").development;
+const knex = require("knex")(knexConfig);
+
+const CartService = require("./service/CartService");
+const cartService = new CartService(knex);
 
 module.exports = express => {
   const router = express.Router();
@@ -70,10 +78,16 @@ module.exports = express => {
   });
 
   router.get("/cart", (req, res) => {
-    res.render("cart", {
-    name: req.user.name,
-    horoscope: req.user.horoscope
+    cartService.list(req.user.name).then(response => {
+      // add logic to handle if there is no data in the cart so that it doesnt throw an error - response[0.totalPrice] like a if else
+      res.render("cart", {
+        keyPublishable: process.env.PK,
+        name: req.user.name,
+        horoscope: req.user.horoscope,
+        totalPrice: response[0].totalPrice
+      });
     });
+    console.log("CARTCARTCART");
   });
 
   router.get("/error", (req, res) => {
@@ -106,6 +120,9 @@ module.exports = express => {
     2) Stores the horoscope in a string into the UsersTable database */
   router.post("/horoscope", dateToHoroscope, (req, res) => {
     res.redirect("/");
+  });
+  router.get("/success", (req, res) => {
+    res.render("success");
   });
 
   router.get("/logout", (req, res) => {

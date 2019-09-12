@@ -8,7 +8,7 @@ class ProductTypeService {
       .select("name", "price", "img")
       .from("clothes")
       .where({
-        horoscope_id: 0,
+        style_id: 3,
         type_id: id
       });
     // console.log(query);
