@@ -9,6 +9,7 @@ class CartRouter {
     let router = express.Router();
     router.get('/', this.get.bind(this));
     router.post('/', this.post.bind(this));
+    router.put('/', this.put.bind(this));
     router.delete('/:id', this.delete.bind(this));
     return router;
   }
@@ -23,9 +24,15 @@ class CartRouter {
 
   post(req, res) {
     return this.cartService
-    .add(req.body.clothes_id, req.session.passport.user)
+    .add(req.body.clothes_id, req.body.quantity, req.session.passport.user)
     .then((msg) => res.json(msg))
     .catch((err) => res.status(500).json(err));
+  }
+
+  put(req, res) {
+    return this.cartService.update(req.body.clothes_id, req.body.quantity, req.session.passport.user)
+      .then((cart) => res.json(cart))
+      .catch((err) => res.status(500).json(err));
   }
 
   delete(req, res) {

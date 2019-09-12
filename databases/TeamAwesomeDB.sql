@@ -8,9 +8,9 @@ CREATE TABLE UsersTable
 
 CREATE TABLE horoscope
 (
-"id" serial primary key,
-"horoscope" varchar,
-)
+  "id" serial primary key,
+  "horoscope" varchar
+);
 
 CREATE TABLE fashionStyles
 (
@@ -28,11 +28,7 @@ CREATE TABLE clothes
   "gender_id" int,
   "price" varchar,
   "img" varchar,
-<<<<<<< HEAD
   "horoscope_id" varchar
-=======
-  "horoscope" varchar
->>>>>>> 5578a21472604ea5f2987f7c9717fab140b3d6b4
 );
 
 
@@ -48,7 +44,8 @@ CREATE TABLE cart
   "cart_id" int,
   "userstable_id" int,
   "clothes_id" int,
-  "price" varchar
+  "price" varchar,
+  "quantity" int
 );
 
 CREATE TABLE purchase
@@ -61,30 +58,36 @@ CREATE TABLE purchase
 
 ALTER TABLE "fashionStyles" ADD FOREIGN KEY ("userstable_id") REFERENCES "userstable" ("id");
 
-ALTER TABLE "clothesFemale" ADD FOREIGN KEY ("style_id") REFERENCES "fashionStyles" ("style_id");
+ALTER TABLE "clothes" ADD FOREIGN KEY ("style_id") REFERENCES "fashionStyles" ("style_id");
 
-ALTER TABLE "fashionStyles" ADD FOREIGN KEY ("gender_id") REFERENCES "clothesFemale" ("gender_id");
+ALTER TABLE "fashionStyles" ADD FOREIGN KEY ("gender_id") REFERENCES "clothes" ("gender_id");
 
 ALTER TABLE "userstable" ADD FOREIGN KEY ("id") REFERENCES "cart" ("userstable_id");
 
-ALTER TABLE "clothesFemale" ADD FOREIGN KEY ("clothes_id") REFERENCES "cart" ("clothes_id");
+ALTER TABLE "clothes" ADD FOREIGN KEY ("clothes_id") REFERENCES "cart" ("clothes_id");
 
-ALTER TABLE "clothesFemale" ADD FOREIGN KEY ("price") REFERENCES "cart" ("price");
+ALTER TABLE "clothes" ADD FOREIGN KEY ("price") REFERENCES "cart" ("price");
 
 ALTER TABLE "userstable" ADD FOREIGN KEY ("id") REFERENCES "purchase" ("userstable_id");
 
 ALTER TABLE "purchase" ADD FOREIGN KEY ("cart_id") REFERENCES "cart" ("cart_id");
 
-ALTER TABLE "clothesFemale" ADD FOREIGN KEY ("type_id") REFERENCES "type" ("id");
+ALTER TABLE "clothes" ADD FOREIGN KEY ("type_id") REFERENCES "type" ("id");
 
-ALTER TABLE "type" ADD FOREIGN KEY ("clothes_id") REFERENCES "clothesMale" ("clothes_id");
+ALTER TABLE "type" ADD FOREIGN KEY ("clothes_id") REFERENCES "clothes" ("clothes_id");
 
-ALTER TABLE "type" ADD FOREIGN KEY ("id") REFERENCES "clothesMale" ("type_id");
+ALTER TABLE "type" ADD FOREIGN KEY ("id") REFERENCES "clothes" ("type_id");
 
-ALTER TABLE "fashionStyles" ADD FOREIGN KEY ("gender_id") REFERENCES "clothesMale" ("gender_id");
+ALTER TABLE "fashionStyles" ADD FOREIGN KEY ("gender_id") REFERENCES "clothes" ("gender_id");
 
-ALTER TABLE "fashionStyles" ADD FOREIGN KEY ("style_id") REFERENCES "clothesMale" ("style_id");
+ALTER TABLE "fashionStyles" ADD FOREIGN KEY ("style_id") REFERENCES "clothes" ("style_id");
 
-ALTER TABLE "cart" ADD FOREIGN KEY ("price") REFERENCES "clothesMale" ("price");
+ALTER TABLE "cart" ADD FOREIGN KEY ("price") REFERENCES "clothes" ("price");
 
-ALTER TABLE "cart" ADD FOREIGN KEY ("clothes_id") REFERENCES "clothesMale" ("clothes_id");
+-- new alter table commands:
+
+ALTER TABLE "cart" ADD FOREIGN KEY ("clothes_id") REFERENCES "clothes" ("clothes_id");
+
+ALTER TABLE "cart" ADD FOREIGN KEY ("cart_id") REFERENCES "purchase" ("clothes_id");
+
+ALTER TABLE "purchase" ADD FOREIGN KEY ("userstable_id") REFERENCES "purchase" ("userstable_id");

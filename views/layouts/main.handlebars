@@ -28,7 +28,7 @@
     <a href="/cart">
     <button type="button" class="btn btn-primary">
       Cart
-      <span class="badge badge-light">{{cartCounter}}</span>
+      <span class="badge badge-light"></span>
     </button></a>
 
     
@@ -60,11 +60,42 @@
   <script src="/js/main.js"></script>
   <script>
     $(() => {
-      $(".dropdown-menu button").on('click', ()=>{
-        $(this).parents(".dropdown").find('.btn').html($(this).text());
-      });
+
+      
+{{!--   
+
+     $("#displayBox").on('click', '.dropdown-menu button', (e) => {
+       console.log($(e.currentTarget).text())
+
+        $('#selected').text($(e.currentTarget).text());
+
+      }); --}}
+
+
+      //Updating cart badge functionality
+
+
+      axios
+        .get("/api/cart")
+        .then(res => {
+          $("span.badge").html(res.data[0].totalQuantity);
+          reloadCart(res.data);
+        })
+        .catch(err => {
+          console.log(err);
+        });
+
+
+      
+  
+      
     });
+
+
   </script>
 </body>
 
 </html>
+
+
+{{!-- $("span.badge").html(res.data[0].totalQuantity); --}}

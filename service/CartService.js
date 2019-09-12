@@ -21,40 +21,53 @@ class CartService {
   It basically takes in the current username and uses it to query for all the clothes in the cart table */
 
   list(userName) {
+
     this.queryUserId(userName);
-    console.log(userId);
-    return this.knex('cart')
-      .select('price')
+
+
+    let query = this.knex
+      .select('clothes.clothes_id', 'clothes.price', 'quantity', 'img', 'name')
+      .from('cart')
+      .join('clothes', {
+        'clothes.clothes_id': 'cart.clothes_id'
+      })
       .where({
         'userstable_id': userId
       })
-      .then((rows) => {
-        let total;
-        let priceArray;
-        let reducer = (acc, cV) => acc + cV;
-        //Converting and parsing the prices from string to numbers
-        priceArray = rows.map(x => Number(x.price.split('$').pop()));
-        //Calculate total price of the cart
-        total = priceArray.reduce(reducer, 0).toFixed(2);
-        let query = this.knex
-          .select('clothes.clothes_id', 'clothes.price', 'img', 'name')
-          .from('cart')
-          .join('clothes', {
-            'clothes.clothes_id': 'cart.clothes_id'
-          })
-          .where({
-            'userstable_id': userId
-          });
-        return query.then(rows => {
-          return rows.map(row => ({
-            name: row.name,
-            img: row.img,
-            id: row.clothes_id,
-            price: row.price.split('$').pop(),
-            total: total
-          }));
-        });
-      });
+      .orderBy('clothes.clothes_id', 'asc');
+
+    return query.then(rows => {
+
+
+      let priceTotal;
+      let quantityTotal;
+      let priceArray;
+      let quantityArray;
+      let reducer = (acc, cV) => acc + cV;
+      //Converting and parsing the prices from string to numbers
+      priceArray = rows.map(x => Number(x.price.split('$').pop()) * x.quantity);
+      //Calculate total price of the cart
+      priceTotal = priceArray.reduce(reducer, 0).toFixed(2);
+
+      quantityArray = rows.map(x => x.quantity);
+      quantityTotal = quantityArray.reduce(reducer, 0);
+
+
+      return rows.map(row => ({
+        name: row.name,
+        img: row.img,
+        id: row.clothes_id,
+        quantity: row.quantity,
+        totalQuantity: quantityTotal,
+        price: row.price.split('$').pop(),
+        totalPrice: priceTotal
+
+
+      }));
+
+    });
+
+
   };
 
   /* The add() method takes in:
@@ -62,7 +75,7 @@ class CartService {
   2) the currently logged-in user's username
   and adds items to the cart table */
 
-  add(clickedClothesId, userName) {
+  add(clickedClothesId, clickedClothesQuantity, userName) {
     //Query price of the clicked item using id
     let price;
     let res = {
@@ -89,6 +102,7 @@ class CartService {
           //Adding clicked item to cart table
           return this.knex.insert({
             clothes_id: clickedClothesId,
+            quantity: clickedClothesQuantity,
             userstable_id: userId,
             price: price
           }).into('cart').then(() => {
@@ -105,6 +119,33 @@ class CartService {
         }
       });
   };
+
+  /* The user is able to update the quantities of the products in their cart  */
+
+  update(clickedClothesId, clickedClothesQuantity, userName) {
+
+    this.queryUserId(userName);
+
+    let query = this.knex
+      .select('clothes_id')
+      .from('cart')
+      .where('clothes_id', clickedClothesId)
+
+    return query.then((rows => {
+      if (rows.length === 1) {
+        return this.knex('cart')
+          .where('clothes_id', clickedClothesId)
+          .update({
+            quantity: clickedClothesQuantity
+          });
+      } else {
+        throw new Error(`Cannot update quantity!`)
+      }
+    }));
+  };
+
+
+
 
   /* The user is able to remove any undesired items by clicking on their remove buttons on the cart page  */
 
