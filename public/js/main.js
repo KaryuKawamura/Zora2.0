@@ -2,11 +2,10 @@ var productList = Handlebars.compile(
   `
   {{#each clothes}}
   <div class="col-lg-3 col-sm-6 cards">
-    <a href""><img class="card-img-top" src={{img}} alt="products" id="productThumb" data-id="{{clothes_id}}"></a>
+    <a href""><img class="card-img-top" src={{img}} alt="products" id="productThumb" data-id="{{clothes_id}}" gender="{{gender_id}}"></a>
     <div class="card-body">
-      <h5> {{price}}</h5>
-      <p class="card-text"> {{name}}
-      </p>
+      <h5>{{name}}</h5>
+      <p class="card-text">{{price}}</p>
     </div>
     <div class="form-group">
       <label>Quantity:</label>
@@ -26,7 +25,6 @@ var productList = Handlebars.compile(
   </div>
 </div>
 <br>
-  <div>
     <button type="button" class="btn btn-primary cartButton" id={{id}}>Add to cart</button>
     </div>
   </div>
@@ -154,6 +152,24 @@ const reloadPage = data => {
     })
   );
 };
+//~~~~~~~~~~~~ Suggestions ~~~~~~~~~~~~//
+var suggestion = Handlebars.compile(
+  `
+  <h5>Other {{horoscope}} also viewed:</h5>
+  <div class="row" id="horoSuggestion">
+  {{#each suggestions}}
+  <div class="col-lg-4 col-sm-4">
+    <a href=""><img class="card-img-top" src="{{img}}" alt="products" id="productThumb" data-id="{{clothes_id}}" gender="{{gender_id}}"></a>
+    <div class="card-body">
+    <h6>{{name}}</h6>
+    <p class="card-text">{{price}}</p>
+    </div>
+  </div>
+  {{/each}}
+  </div>
+  `
+);
+// // // // // // // // // // // // // // // //
 const reloadCart = data => {
   $("#cart").html(
     cartTemplate({
@@ -165,7 +181,8 @@ const reloadCart = data => {
 const toProduct = data => {
   $("#suggestions").html(
     suggestion({
-      suggestions: data
+      suggestions: data,
+      horoscope: horoscope
     })
   );
 };
@@ -173,6 +190,11 @@ const toProduct = data => {
 Axios requests and event listeners */
 //Getting user cart info
 $(() => {
+  //capture the horoscope
+  let greeting = $(".justify-content-end span").text();
+  let greetArray = greeting.trim().split(" ");
+  let horoscope = greetArray[greetArray.length - 1];
+
   axios
     .get("/api/clothes")
     .then(res => {
@@ -224,40 +246,66 @@ $(() => {
         // console.log(res.data.quantity)
 
         if (res.data.status == "success") {
-          $("#message").html(
-            '<br><div class="alert alert-success fade show" role="alert">' +
-              res.data.msg +
-              "</div>"
-          );
+          if (res.data.status == "success") {
+            $("#message").html(
+              '<br><div class="alert alert-success fade show" role="alert">' +
+                res.data.msg +
+                "</div>"
+            );
 
+            setTimeout(function() {
+              location.reload(true);
+            }, 1000);
+          } else if (res.data.status == "fail") {
+            $("#message").html(
+              '<br><div class="alert alert-danger fade show" role="alert">' +
+                res.data.msg +
+                "</div>"
+            );
+          }
           setTimeout(function() {
-            location.reload(true);
-          }, 1000);
-        } else if (res.data.status == "fail") {
-          $("#message").html(
-            '<br><div class="alert alert-danger fade show" role="alert">' +
-              res.data.msg +
-              "</div>"
-          );
+            $(".alert").alert("close");
+          }, 500);
         }
-        setTimeout(function() {
-          $(".alert").alert("close");
-        }, 500);
       })
       .then(() => {});
   });
 
   $("#displayBox").on("click", "img", function(e) {
     // e.preventDefault();
+    let id = e.currentTarget.getAttribute("data-id");
+    let gender = e.currentTarget.getAttribute("gender");
+
+    axios
+      .get("/api/productInfo/" + id, { id: id })
+      .then(res => {
+        reloadPage(res.data);
+      })
+      .catch(err => {
+        console.log(err);
+      });
+
+    axios
+      .post("/api/suggestion/" + horoscope + "/" + gender, {
+        horoscope: horoscope,
+        gender: gender
+      })
+      .then(res => {
+        toProduct(res.data, horoscope, gender);
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  });
+
+  $("#suggestions").on("click", "img", function(e) {
+    e.preventDefault();
     console.log(e.currentTarget.getAttribute("data-id"));
     let id = e.currentTarget.getAttribute("data-id");
 
     axios
-      .get("/api/productInfo/" + id, {
-        id: id
-      })
+      .get("/api/productInfo/" + id, { id: id })
       .then(res => {
-        // console.log(res.data);
         reloadPage(res.data);
       })
       .catch(err => {

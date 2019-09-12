@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Zora</title>
+  <link rel="shortcut icon" href="./images/favicon.ico" />
+</head>
+<link href="https://fonts.googleapis.com/css?family=Arima+Madurai&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="./css/stylesheet.css">
+
+<body>
+  <!-- Top Navigation Bar-->
+  <div id="landing">
+    <nav class="navbar navbar-expand-md navbar-light bg-light">
+      <!-- Logo -->
+      <a class="navbar-brand" href="/"><img src="/images/logo.png" alt="Zora" id="logo">
+        Zora
+      </a>
+      <!-- <ul class="navbar-nav ml-auto"> -->
+      <a href="/login" class="ml-auto" id="nav-link">Login</a>
+      <!-- </ul> -->
+      <!-- <ul class="navbar-nav ml-auto"></ul> -->
+      <a href="/signup" id="nav-link">Sign up</a>
+      <!-- </ul> -->
+    </nav>
+    <!-- Wrap everything in bootstrap container and row -->
+    <div class="container" id="home">
+
+      <div class="row">
+        <div class="col-lg-3">
+          <div class="row d-flex justify-content-center">
+            <span style="margin-right: 6px">Men</span>
+            <div class="custom-control custom-switch">
+              <input type="checkbox" class="custom-control-input" disabled id="customSwitch1">
+              <label class="custom-control-label" for="customSwitch1">Women</label>
+            </div>
+          </div>
+          <br>
+          <h2>Styles</h2>
+          <div id="productStyle" class="list-group">
+            <a href id="productStyle" class="list-group-item list-group-item-action active" data-toggle="modal"
+              data-target="#myModal">
+              Horoscope Highlights
+            </a>
+            <a href id="productStyle" class="list-group-item list-group-item-action" data-toggle="modal"
+              data-target="#myModal">Trending</a>
+            <a href id="productStyle" class="list-group-item list-group-item-action" data-toggle="modal"
+              data-target="#myModal">Formal</a>
+            <a href id="productStyle" class="list-group-item list-group-item-action" data-toggle="modal"
+              data-target="#myModal">Casual</a>
+            <a href id="productStyle" class="list-group-item list-group-item-action" data-toggle="modal"
+              data-target="#myModal">Going-out-out</a>
+          </div>
+        </div>
+
+        <div class="col-lg-9">
+          <h2>Product</h2>
+          <div id="productType" class="list-group list-group-horizontal">
+            <button data-id="2" class="list-group-item list-group-item-action active" data-toggle="modal"
+              data-target="#myModal">
+              Tops
+            </button>
+            <button data-id="3" class="list-group-item list-group-item-action" data-toggle="modal"
+              data-target="#myModal">Bottoms</button>
+            <button data-id="1" class="list-group-item list-group-item-action" data-toggle="modal"
+              data-target="#myModal">Shoes</button>
+            <button data-id="0" class="list-group-item list-group-item-action" data-toggle="modal"
+              data-target="#myModal">Dresses/Suits</button>
+          </div>
+
+          <!-- Modal -->
+          <div id="myModal" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+              <!-- Modal content-->
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                  </br>
+                  <h5>Please log in / sign up to see more :)</h5>
+                  </br>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row" id="displayBox">
+            <div class="col-lg-3 col-sm-6 cards">
+              <img class="card-img-top"
+                src="https://images.asos-media.com/products/asos-design-super-skinny-smart-trousers-in-black/11464256-1-black?$n_480w$&wid=476&fit=constrain"
+                alt="products" id="productThumb">
+              <div class="card-body">
+                <h5>DESIGN super skinny smart trousers in black</h5>
+                <p class="card-text">HKD$211.64</p>
+              </div>
+            </div>
+            <div class="col-lg-3 col-sm-6 cards">
+              <img class="card-img-top"
+                src="https://images.asos-media.com/products/boohooman-tracksuit-with-man-logo-in-neon-yellow/12411538-1-neonyellow?$n_480w$&wid=476&fit=constrain"
+                alt="products" id="productThumb">
+              <div class="card-body">
+                <h5>boohooMAN tracksuit with man logo in neon yellow</h5>
+                <p class="card-text">HKD$370.37</p>
+              </div>
+            </div>
+            <div class="col-lg-3 col-sm-6 cards">
+              <img class="card-img-top"
+                src="https://images.asos-media.com/products/buffalo-classic-hi-top-chunky-sole-trainers-in-black/10482674-1-black?$n_480w$&wid=476&fit=constrain"
+                alt="products" id="productThumb">
+              <div class="card-body">
+                <h5>Buffalo Classic hi top chunky sole trainers in black</h5>
+                <p class="card-text">HKD$1,756.61</p>
+              </div>
+            </div>
+            <div class="col-lg-3 col-sm-6 cards">
+              <img class="card-img-top"
+                src="https://images.asos-media.com/products/asos-design-skinny-jeans-in-tie-dye/11522212-1-orange?$n_480w$&wid=476&fit=constrain"
+                alt="products" id="productThumb">
+              <div class="card-body">
+                <h5>LookBook DESIGN skinny jeans in tie dye</h5>
+                <p class="card-text">HKD$423.28</p>
+              </div>
+            </div>
+            <div class="col-lg-3 col-sm-6 cards">
+              <img class="card-img-top"
+                src="https://images.asos-media.com/products/asos-design-boxy-cropped-tank-vest-in-orange/12759628-1-amberglow?$n_480w$&wid=476&fit=constrain"
+                alt="products" id="productThumb">
+              <div class="card-body">
+                <h5>LookBook DESIGN boxy cropped tank vest in orange</h5>
+                <p class="card-text">HKD$105.82</p>
+              </div>
+            </div>
+            <div class="col-lg-3 col-sm-6 cards">
+              <img class="card-img-top"
+                src="https://images.asos-media.com/products/selected-homme-suede-spanish-espadrilles-in-navy/11493685-1-darknavy?$n_480w$&wid=476&fit=constrain"
+                alt="products" id="productThumb">
+              <div class="card-body">
+                <h5>Selected Homme suede spanish espadrilles in navy</h5>
+                <p class="card-text">HKD$529.10</p>
+              </div>
+            </div>
+            <div class="col-lg-3 col-sm-6 cards">
+              <img class="card-img-top"
+                src="https://images.asos-media.com/products/birkenstock-arizona-eva-black-flat-sandals/9974994-1-black?$n_480w$&wid=476&fit=constrain"
+                alt="products" id="productThumb">
+              <div class="card-body">
+                <h5>Birkenstock Arizona Eva Black Flat Sandals</h5>
+                <p class="card-text">HKD$317.46</p>
+              </div>
+            </div>
+            <div class="col-lg-3 col-sm-6 cards">
+              <img class="card-img-top"
+                src="https://images.asos-media.com/products/raid-myla-black-ankle-strap-flat-shoes/12035607-1-bk1black1?$n_480w$&wid=476&fit=constrain"
+                alt="products" id="productThumb">
+              <div class="card-body">
+                <h5>RAID Myla black ankle strap flat shoes</h5>
+                <p class="card-text">HKD$243.28</p>
+              </div>
+            </div>
+            <div class="col-lg-3 col-sm-6 cards">
+              <img class="card-img-top"
+                src="https://images.asos-media.com/products/collusion-tall-check-print-blazer/11779280-1-multi?$n_480w$&wid=476&fit=constrain"
+                alt="products" id="productThumb">
+              <div class="card-body">
+                <h5>COLLUSION check print blazer</h5>
+                <p class="card-text">HKD$317.46</p>
+              </div>
+            </div>
+            <div class="col-lg-3 col-sm-6 cards">
+              <img class="card-img-top"
+                src="https://images.asos-media.com/products/adidas-originals-adicolor-three-stripe-long-sleeve-t-shirt-in-white/11710940-1-white?$n_480w$&wid=476&fit=constrain"
+                alt="products" id="productThumb">
+              <div class="card-body">
+                <h5>adidas Originals adicolor three stripe long sleeve t-shirt in white</h5>
+                <p class="card-text">HKD$349.21</p>
+              </div>
+            </div>
+            <div class="col-lg-3 col-sm-6 cards">
+              <img class="card-img-top"
+                src="https://images.asos-media.com/products/prettylittlething-peplum-satin-cami-top-with-lace-trim-in-navy/13036685-1-navy?$n_480w$&wid=476&fit=constrain"
+                alt="products" id="productThumb">
+              <div class="card-body">
+                <h5>PrettyLittleThing peplum satin cami top with lace trim in navy</h5>
+                <p class="card-text">HKD$190.48</p>
+              </div>
+            </div>
+            <div class="col-lg-3 col-sm-6 cards">
+              <img class="card-img-top"
+                src="https://images.asos-media.com/products/wild-honey-knitted-tunic-dress-with-pockets/12388116-1-camel?$n_480w$&wid=476&fit=constrain"
+                alt="products" id="productThumb">
+              <div class="card-body">
+                <h5>Wild Honey knitted tunic dress with pockets</h5>
+                <p class="card-text">HKD$359.79</p>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+        <!-- Footer -->
+        <footer class="col-lg-12 py-3 bg-light" id="footer">
+            <div class="footerContainer">
+              <p class="m-0 text-center">Copyright &copy; Zora 2019</p>
+            </div>
+        </footer>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+
+</html>

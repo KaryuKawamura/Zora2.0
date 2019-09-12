@@ -1,4 +1,4 @@
-CREATE TABLE UsersTable
+CREATE TABLE userstable
 (
   "id" serial primary key,
   "name" varchar,

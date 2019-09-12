@@ -4,7 +4,7 @@ class ClothesService {
   }
   list() {
     let query = this.knex
-      .select("name", "clothes_id", "price", "img")
+      .select("name", "clothes_id", "price", "img", "gender_id")
       .from("clothes")
       .where({
         horoscope_id: 0,

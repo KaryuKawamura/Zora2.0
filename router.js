@@ -130,5 +130,17 @@ module.exports = express => {
     res.redirect("/");
   });
 
+  router.get("/men", (req, res) => {
+    res.sendFile(__dirname + "/pages/men.html");
+  });
+
+  router.get("/women", (req, res) => {
+    res.sendFile(__dirname + "/pages/women.html");
+  });
+
+  router.get("/special", (req, res) => {
+    res.sendFile(__dirname + "/pages/special.html");
+  });
+
   return router;
 };

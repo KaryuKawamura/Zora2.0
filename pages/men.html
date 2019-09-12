@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Zora</title>
+  <link rel="shortcut icon" href="./images/favicon.ico" />
+</head>
+<link href="https://fonts.googleapis.com/css?family=Arima+Madurai&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="./css/stylesheet.css">
+
+<body>
+  <!-- Top Navigation Bar-->
+  <div id="landing">
+    <nav class="navbar navbar-expand-md navbar-light bg-light">
+      <!-- Logo -->
+      <a class="navbar-brand" href="/"><img src="/images/logo.png" alt="Zora" id="logo">
+        Zora
+      </a>
+      <!-- <ul class="navbar-nav ml-auto"> -->
+      <a href="/login" class="ml-auto" id="nav-link">Login</a>
+      <!-- </ul> -->
+      <!-- <ul class="navbar-nav ml-auto"></ul> -->
+      <a href="/signup" id="nav-link">Sign up</a>
+      <!-- </ul> -->
+    </nav>
+    <!-- Wrap everything in bootstrap container and row -->
+    <div class="container" id="home">
+
+      <div class="row">
+        <div class="col-lg-3">
+          <div class="row d-flex justify-content-center">
+            <span style="margin-right: 6px">Men</span>
+            <div class="custom-control custom-switch">
+              <input type="checkbox" class="custom-control-input" disabled id="customSwitch1">
+              <label class="custom-control-label" for="customSwitch1">Women</label>
+            </div>
+          </div>
+
+          <br>
+
+          <h2>Styles</h2>
+          <div id="productStyle" class="list-group">
+            <a href id="productStyle" class="list-group-item list-group-item-action active" data-toggle="modal"
+              data-target="#myModal">
+              Horoscope Highlights
+            </a>
+            <a href id="productStyle" class="list-group-item list-group-item-action" data-toggle="modal"
+              data-target="#myModal">Trending</a>
+            <a href id="productStyle" class="list-group-item list-group-item-action" data-toggle="modal"
+              data-target="#myModal">Formal</a>
+            <a href id="productStyle" class="list-group-item list-group-item-action" data-toggle="modal"
+              data-target="#myModal">Casual</a>
+            <a href id="productStyle" class="list-group-item list-group-item-action" data-toggle="modal"
+              data-target="#myModal">Going-out-out</a>
+          </div>
+        </div>
+
+        <div class="col-lg-9">
+          <h2>Product</h2>
+          <div id="productType" class="list-group list-group-horizontal">
+            <button data-id="2" class="list-group-item list-group-item-action active" data-toggle="modal"
+              data-target="#myModal">
+              Tops
+            </button>
+            <button data-id="3" class="list-group-item list-group-item-action" data-toggle="modal"
+              data-target="#myModal">Bottoms</button>
+            <button data-id="1" class="list-group-item list-group-item-action" data-toggle="modal"
+              data-target="#myModal">Shoes</button>
+            <button data-id="0" class="list-group-item list-group-item-action" data-toggle="modal"
+              data-target="#myModal">Dresses/Suits</button>
+          </div>
+
+          <!-- Modal -->
+          <div id="myModal" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+              <!-- Modal content-->
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                  </br>
+                  <h5>Please log in / sign up to see more :)</h5>
+                  </br>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row" id="displayBox">
+            <div class="col-lg-3 col-sm-6 cards">
+              <img class="card-img-top"
+                src="https://images.asos-media.com/products/new-look-poplin-shirt-in-regular-fit-in-black/11451574-1-black?$n_480w$&wid=476&fit=constrain"
+                alt="products" id="productThumb">
+              <div class="card-body">
+                <h5>New Look poplin shirt in regular fit in black</h5>
+                <p class="card-text">HKD$137.46</p>
+              </div>
+            </div>
+            <div class="col-lg-3 col-sm-6 cards">
+              <img class="card-img-top"
+                src="https://images.asos-media.com/products/asos-design-skinny-fit-shirt-blue-pow-check-shirt-with-contrast-rib-collar/12094732-1-blue?$n_480w$&wid=476&fit=constrain"
+                alt="products" id="productThumb">
+              <div class="card-body">
+                <h5>LookBook DESIGN skinny fit shirt blue pow check shirt with contrast rib collar</h5>
+                <p class="card-text">HKD$232.80</p>
+              </div>
+            </div>
+            <div class="col-lg-3 col-sm-6 cards">
+              <img class="card-img-top"
+                src="https://images.asos-media.com/products/asos-design-oversized-drop-shoulder-longline-crinkle-grandad-collar-shirt-in-pink/11991804-1-pink?$n_480w$&wid=476&fit=constrain"
+                alt="products" id="productThumb">
+              <div class="card-body">
+                <h5>LookBook DESIGN oversized drop shoulder longline crinkle grandad collar shirt </h5>
+                  <p class="card-text">HKD$264.55<p>
+              </div>
+            </div>
+            <div class="col-lg-3 col-sm-6 cards">
+              <img class="card-img-top"
+                src="https://images.asos-media.com/products/asos-design-festival-regular-fit-shirt-in-neon-snake-print/12247062-1-green?$n_480w$&wid=476&fit=constrain"
+                alt="products" id="productThumb">
+              <div class="card-body">
+                <h5>LookBook DESIGN festival regular fit shirt in neon snake print</h5>
+                <p class="card-text">HKD$190.48</p>
+              </div>
+            </div>
+            <div class="col-lg-3 col-sm-6 cards">
+              <img class="card-img-top"
+                src="https://images.asos-media.com/products/asos-design-regular-fit-viscose-shirt-in-khaki/12450279-1-khaki?$n_480w$&wid=476&fit=constrain"
+                alt="products" id="productThumb">
+              <div class="card-body">
+                <h5>LookBook DESIGN regular fit viscose shirt in khaki</h5>
+                <p class="card-text">HKD$232.80</p>
+              </div>
+            </div>
+            <div class="col-lg-3 col-sm-6 cards">
+              <img class="card-img-top"
+                src="https://images.asos-media.com/products/asos-design-skinny-stripe-shirt-in-white/12772348-1-white?$n_480w$&wid=476&fit=constrain"
+                alt="products" id="productThumb">
+              <div class="card-body">
+                <h5>LookBook DESIGN skinny stripe shirt in white</h5>
+                <p class="card-text">HKD$211.64</p>
+              </div>
+            </div>
+            <div class="col-lg-3 col-sm-6 cards">
+              <img class="card-img-top"
+                src="https://images.asos-media.com/products/asos-design-slim-check-shirt-in-brown/12772159-1-brown?$n_480w$&wid=476&fit=constrain"
+                alt="products" id="productThumb">
+              <div class="card-body">
+                <h5>LookBook DESIGN slim check shirt in brown</h5>
+                <p class="card-text">HKD$211.64</p>
+              </div>
+            </div>
+            <div class="col-lg-3 col-sm-6 cards">
+              <img class="card-img-top"
+                src="https://images.asos-media.com/products/asos-design-regular-fit-flannel-marl-shirt-in-mustard/11680211-1-mustard?$n_480w$&wid=476&fit=constrain"
+                alt="products" id="productThumb">
+              <div class="card-body">
+                <h5>LookBook DESIGN regular fit flannel marl shirt in mustard</h5>
+                <p class="card-text">HKD$264.55</p>
+              </div>
+            </div>
+            <div class="col-lg-3 col-sm-6 cards">
+              <img class="card-img-top"
+                src="https://images.asos-media.com/products/asos-design-skinny-fit-smart-shirt-with-grandad-collar-tipping-detail-in-blue/11955663-1-blue?$n_480w$&wid=476&fit=constrain"
+                alt="products" id="productThumb">
+              <div class="card-body">
+                <h5>LookBook DESIGN skinny fit smart shirt with grandad collar & tipping detail in blue</h5>
+                <p class="card-text">HKD$232.80</p`>
+              </div>
+            </div>
+            <div class="col-lg-3 col-sm-6 cards">
+              <img class="card-img-top"
+                src="https://images.asos-media.com/products/asos-design-stretch-slim-denim-shirt-in-grey-with-grandad-collar/11414082-1-grey?$n_480w$&wid=476&fit=constrain"
+                alt="products" id="productThumb">
+              <div class="card-body">
+                <h5>LookBook DESIGN stretch slim denim shirt in grey with grandad collar</h5>
+                <p class="card-text">HKD$211.64</p>
+              </div>
+            </div>
+            <div class="col-lg-3 col-sm-6 cards">
+              <img class="card-img-top"
+                src="https://images.asos-media.com/products/asos-design-smart-skinny-oxford-shirt-with-grandad-collar-in-white/9109198-1-white?$n_480w$&wid=476&fit=constrain"
+                alt="products" id="productThumb">
+              <div class="card-body">
+                <h5>LookBook DESIGN smart skinny oxford shirt with grandad collar in white</h5>
+                <p class="card-text">HKD$190.48</p>
+              </div>
+            </div>
+            <div class="col-lg-3 col-sm-6 cards">
+              <img class="card-img-top"
+                src="https://images.asos-media.com/products/asos-design-festival-co-ord-oversized-cropped-t-shirt-with-half-sleeve-in-mesh-in-white/11403449-1-white?$n_480w$&wid=476&fit=constrain"
+                alt="products" id="productThumb">
+              <div class="card-body">
+                <h5>LookBook DESIGN festival co-ord oversized cropped t-shirt with half sleeve in white</h5>
+                  <p class="card-text">HKD$169.31</p>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+        <!-- Footer -->
+        <footer class="col-lg-12 py-3 bg-light" id="footer">
+            <div class="footerContainer">
+              <p class="m-0 text-center">Copyright &copy; Zora 2019</p>
+            </div>
+        </footer>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+
+</html>

@@ -25,6 +25,9 @@ const ClothesTrendRouter = require("./router/ClothesTrendRouter");
 const ProductTypeService = require("./service/ProductTypeService");
 const ProductTypeRouter = require("./router/ProductTypeRouter");
 
+const SuggestionService = require("./service/SuggestionService");
+const SuggestionRouter = require("./router/SuggestionRouter");
+
 // const stripe = require("stripe")("pk_test_fcZ614e9OlUYxHihml2qDRNW00HwgZPpJU");
 
 require("dotenv").config();
@@ -61,6 +64,7 @@ const cartService = new CartService(knex);
 const productService = new ProductService(knex);
 const productTypeService = new ProductTypeService(knex);
 const clothesTrendService = new ClothesTrendService(knex);
+const suggestionService = new SuggestionService(knex);
 
 app.use("/", router);
 app.use("/api/cart/", new CartRouter(cartService).router());
@@ -70,6 +74,7 @@ app.use(
 );
 app.use("/api/clothes", new ClothesRouter(clothesService).router());
 app.use("/api/productInfo", new ProductRouter(productService).router());
+app.use("/api/suggestion", new SuggestionRouter(suggestionService).router());
 app.use(
   "/api/productTypeInfo",
   new ProductTypeRouter(productTypeService).router()
