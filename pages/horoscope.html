@@ -5,12 +5,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-  <title>Login Page</title>
-
+  <title>Your Horoscope</title>
+  <link rel="shortcut icon" href="./images/favicon.ico" />
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
-
   <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" />
+  <link rel="stylesheet" href="./css/stylesheet.css">
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
@@ -29,18 +29,41 @@
     });
   </script>
 </head>
-
 <body>
-  <h1>Horoscope Calculator</h1>
-  <form action="/horoscope" method="post">
-  <div class="form-group">
-    <label>Date:</label>
-    <input id="datepicker" name="date" autocomplete="off" />
+  <div id="indexLanding">
+    <nav class="navbar navbar-expand-md navbar-light">
+      <a class="navbar-brand" href="/"><img src="/images/logo.png" alt="Zora" id="logo">
+        Zora
+      </a>
+      <a href="/login" class="ml-auto" id="nav-link">Login</a>
+      <a href="/signup" id="nav-link">Sign up</a>
+    </nav>
   </div>
-  <div>
-    <input type="submit" class="btn btn-primary" value="Sign up" />
-  </div>
-  </form>
+    <div id="bigContainerScope">
+      <h1></h1>
+      <h1></h1>
+      <h1></h1>
+      <h1></h1>
+        <div id="contentHoroCal">
+          <h1>Horoscope Calculator</h1>
+          <form action="/horoscope" method="post">
+            <div class="form-group">
+              <label>Date:</label>
+              <input id="datepicker" name="date" autocomplete="off" />
+            </div>
+            <div>
+              <input type="submit" class="btn btn-outline-dark" value="Sign up" />
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <!-- Footer -->
+    <footer class="py-3 bg-light">
+      <div class="container">
+        <p class="m-0 text-center">Copyright &copy; Zora 2019</p>
+      </div>
+    </footer>
 </body>
 
 </html>

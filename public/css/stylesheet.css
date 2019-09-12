@@ -103,6 +103,27 @@ footer #footer {
   padding: 0%;
 }
 
+/********* Horoscope Calculator **********/
+#bigContainerScope {
+  background: url('/images/horoscope_bg.jpg') fixed repeat repeat;
+  height: 100vh;
+}
+
+#contentHoroCal {
+  margin: -3% 50px 50px 50px ;
+  padding: 70px 0 150px 0;
+  background: rgba(255, 255, 255, 0.7);
+  text-align: center;
+}
+
+#contentHoroCal h1 {
+  padding-bottom: 50px; 
+}
+
+#contentHoroCal label {
+  font-size: 18px;
+}
+
 /********* ProductList Page **********/
 #home {
   padding-top: 20px;
