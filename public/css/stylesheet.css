@@ -109,6 +109,35 @@ footer #footer {
   padding-top: 20px;
 }
 
+.card-body {
+  min-height: 180px;
+}
+
+h5 {
+  font-size: 14px;
+}
+
+p {
+  font-size: 12px;
+}
+
+.cartButton img {
+  height: 15px;
+}
+
+#topCartButton img {
+  height: 15px;
+}
+
+.cards {
+  margin-bottom: 40px;
+}
+
+.dropdown button {
+  background-color: white;
+}
+
+
 /********* ProductInfo Page **********/
 #productInfo {
   padding: 20px;
