@@ -5,7 +5,7 @@ class ProductTypeService {
 
   list(id) {
     let query = this.knex
-      .select("name", "price", "img")
+      .select("name", "price", "img", "gender_id")
       .from("clothes")
       .where({
         horoscope_id: 0,

@@ -4,15 +4,18 @@
 <head>
   <meta charset="utf-8">
   <title>Zora</title>
+  <link rel="shortcut icon" href="./images/favicon.ico"/>
 </head>
 <link href="https://fonts.googleapis.com/css?family=Arima+Madurai&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-
-  <link rel="stylesheet" href="./css/stylesheet.css">
+<link rel="stylesheet" href="./css/stylesheet.css">
 
 <body>
+  <!-------------------- Loading ------------------------>        
+  <div class="loader"></div>
   <!-- Top Navigation Bar-->
-  <nav class="navbar navbar-expand-md navbar-light bg-light">
+  <div id="indexLanding">
+  <nav class="navbar navbar-expand-md navbar-light">
     <!-- Logo -->
     <a class="navbar-brand" href="/"><img src="/images/logo.png" alt="Zora" id="logo">
       Zora
@@ -34,13 +37,13 @@
     </ul>
     <div class="carousel-inner">
       <div class="carousel-item active fixed-container">
-        <img class="d-block img-fluid cover" layout="fill" src="./images/slide_1.jpg" alt="First slide">
+        <a href="/special"><img class="d-block img-fluid cover" layout="fill" src="./images/slide_1.jpg" alt="First slide"></a>
       </div>
       <div class="carousel-item fixed-container">
-        <img class="d-block img-fluid cover" layout="fill" src="./images/slide_2.jpg" alt="Second slide">
+        <a href="/women"><img class="d-block img-fluid cover" layout="fill" src="./images/slide_2.jpg" alt="Second slide"></a>
       </div>
       <div class="carousel-item fixed-container">
-        <img class="d-block img-fluid cover" layout="fill" src="./images/slide_3.jpg" alt="Third slide">
+        <a href="/men"><img class="d-block img-fluid cover" layout="fill" src="./images/slide_3.jpg" alt="Third slide"></a>
       </div>
     </div>
     <a class="carousel-control-prev" href="#carouselExampleIndicators" data-slide="prev">
@@ -54,15 +57,16 @@
   </div>
   </div>
   <!-- Shop Men & Women -->
-  <div class="container-fluid row">
+  <div class="container-fluid row" id="cardsDiv">
     <div class="col-lg-6 col-sm-6" id="shop_cards">
-      <a href="#women"><img src="./images/shop_women.jpg" class="img-fluid" alt="shop women"></a>
+      <a href="/women"><img src="./images/shop_women.jpg" class="img-fluid" alt="shop women"></a>
 
     </div>
     <div class="col-lg-6 col-sm-6" id="shop_cards">
-      <a href="#men"><img src="./images/shop_men.jpg" class="img-fluid" alt="shop men"></a>
+      <a href="/men"><img src="./images/shop_men.jpg" class="img-fluid" alt="shop men"></a>
     </div>
   </div>
+</div>
   <!-- Footer -->
   <footer class="py-3 bg-light">
     <div class="container">
@@ -72,6 +76,13 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <script>
+    // Loading //
+    window.addEventListener("load", function(){
+        const loader = document.querySelector(".loader");
+        loader.className += " hidden";
+    });
+  </script>
 </body>
 
 </html>

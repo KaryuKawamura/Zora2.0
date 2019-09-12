@@ -1,6 +1,27 @@
-/* body {
+body {
   font-family: 'Arima Madurai', cursive;
-} */
+}
+/***~~~~~~ Loading ~~~~~***/
+.loader {
+  position: fixed;
+  z-index: 2000;
+  top: 0;
+  left: 0;
+  height: 650%;
+  width: 100%;
+  background: url('/images/starry_gif1.gif') repeat;
+}
+.loader.hidden  {
+  animation: fadeOut 2s;
+  animation-fill-mode: forwards;
+}
+@keyframes fadeOut {
+  100% {
+      opacity: 0;
+      visibility: hidden;
+  }
+}
+/**********************************/
 /* Top Navigation Bar Elements */
 nav #logo, #horoscopeIcon {
   width: 40px;
@@ -24,6 +45,17 @@ nav #logo, #horoscopeIcon {
 }
 
 /********* Landing Page **********/
+#indexLanding .navbar {
+  background-color: rgb(255,255,255,0.85);
+  padding: 1% 0;
+}
+
+#indexLanding {
+  background: url('/images/landing_bg.jpg') fixed no-repeat; 
+  position: relative;
+  background-size: cover;
+}
+
 #carouselExampleIndicators {
   margin: 0rem !important;
   padding: 30px;
@@ -59,7 +91,21 @@ nav #logo, #horoscopeIcon {
 #displayBox {
   display: flex;
   flex-flow: wrap;
-  padding: 15px 0 15px 0;
+  padding: 25px 0 25px 0;
+}
+
+/********* Guest Page **********/
+.modal-body h5 {
+  text-align: center;
+}
+
+footer #footer {
+  padding: 0%;
+}
+
+/********* ProductList Page **********/
+#home {
+  padding-top: 20px;
 }
 
 /********* ProductInfo Page **********/
@@ -76,9 +122,19 @@ nav #logo, #horoscopeIcon {
   padding: 15px;
 }
 
-@media screen and (max-width: 450px) {
+#suggestions h5 {
+  padding: 40px 0 20px 0;
+}
+
+@media screen and (max-width: 580px) {
   #shop_cards {
     width: 100%;
+  }
+
+  #cardsDiv {
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 }
 

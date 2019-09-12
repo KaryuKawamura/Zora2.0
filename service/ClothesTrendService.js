@@ -7,7 +7,7 @@ class ClothesTrendService {
     console.log("Fucntion fired");
 
     let query = this.knex
-      .select("clothes_id", "name", "price", "img", "style_id", "type_id")
+      .select("clothes_id", "name", "price", "img", "style_id", "type_id", "gender_id")
       .from("clothes")
       .where({
         type_id: 2
@@ -15,7 +15,7 @@ class ClothesTrendService {
       .limit(360);
     console.log("Hey this is trend");
     return query.then(data => {
-      console.log(data);
+      // console.log(data);
       return data;
     });
   }

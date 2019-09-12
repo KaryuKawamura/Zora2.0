@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Zora</title>
+  <link rel="shortcut icon" href="./images/favicon.ico" />
+</head>
+<link href="https://fonts.googleapis.com/css?family=Arima+Madurai&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="./css/stylesheet.css">
+
+<body>
+  <!-- Top Navigation Bar-->
+  <div id="landing">
+    <nav class="navbar navbar-expand-md navbar-light bg-light">
+      <!-- Logo -->
+      <a class="navbar-brand" href="/"><img src="/images/logo.png" alt="Zora" id="logo">
+        Zora
+      </a>
+      <!-- <ul class="navbar-nav ml-auto"> -->
+      <a href="/login" class="ml-auto" id="nav-link">Login</a>
+      <!-- </ul> -->
+      <!-- <ul class="navbar-nav ml-auto"></ul> -->
+      <a href="/signup" id="nav-link">Sign up</a>
+      <!-- </ul> -->
+    </nav>
+    <!-- Wrap everything in bootstrap container and row -->
+    <div class="container" id="home">
+
+      <div class="row">
+        <div class="col-lg-3">
+          <div class="row d-flex justify-content-center">
+            <span style="margin-right: 6px">Men</span>
+            <div class="custom-control custom-switch">
+              <input type="checkbox" class="custom-control-input" disabled id="customSwitch1">
+              <label class="custom-control-label" for="customSwitch1">Women</label>
+            </div>
+          </div>
+
+          <br>
+
+          <h2>Styles</h2>
+          <div id="productStyle" class="list-group">
+            <a href id="productStyle" class="list-group-item list-group-item-action active" data-toggle="modal"
+              data-target="#myModal">
+              Horoscope Highlights
+            </a>
+            <a href id="productStyle" class="list-group-item list-group-item-action" data-toggle="modal"
+              data-target="#myModal">Trending</a>
+            <a href id="productStyle" class="list-group-item list-group-item-action" data-toggle="modal"
+              data-target="#myModal">Formal</a>
+            <a href id="productStyle" class="list-group-item list-group-item-action" data-toggle="modal"
+              data-target="#myModal">Casual</a>
+            <a href id="productStyle" class="list-group-item list-group-item-action" data-toggle="modal"
+              data-target="#myModal">Going-out-out</a>
+          </div>
+        </div>
+
+        <div class="col-lg-9">
+          <h2>Product</h2>
+          <div id="productType" class="list-group list-group-horizontal">
+            <button data-id="2" class="list-group-item list-group-item-action active" data-toggle="modal"
+              data-target="#myModal">
+              Tops
+            </button>
+            <button data-id="3" class="list-group-item list-group-item-action" data-toggle="modal"
+              data-target="#myModal">Bottoms</button>
+            <button data-id="1" class="list-group-item list-group-item-action" data-toggle="modal"
+              data-target="#myModal">Shoes</button>
+            <button data-id="0" class="list-group-item list-group-item-action" data-toggle="modal"
+              data-target="#myModal">Dresses/Suits</button>
+          </div>
+
+          <!-- Modal -->
+          <div id="myModal" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+              <!-- Modal content-->
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                  </br>
+                  <h5>Please log in / sign up to see more :)</h5>
+                  </br>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row" id="displayBox">
+            <div class="col-lg-3 col-sm-6 cards">
+              <img class="card-img-top"
+                src="https://images.asos-media.com/products/weekday-sandy-long-sleeve-in-black/13552795-1-black?$n_480w$&wid=476&fit=constrain"
+                alt="products" id="productThumb">
+              <div class="card-body">
+                <h5>Weekday Sandy Long Sleeve in Black</h5>
+                <p class="card-text">HKD$211.64</p>
+              </div>
+            </div>
+            <div class="col-lg-3 col-sm-6 cards">
+              <img class="card-img-top"
+                src="https://images.asos-media.com/products/new-look-tie-front-tee-in-white/13412311-1-white?$n_480w$&wid=476&fit=constrain"
+                alt="products" id="productThumb">
+              <div class="card-body">
+                <h5>New Look tie front tee in white</h5>
+                <p class="card-text">HKD$95.13</p>
+              </div>
+            </div>
+            <div class="col-lg-3 col-sm-6 cards">
+              <img class="card-img-top"
+                src="https://images.asos-media.com/products/dickies-ringer-t-shirt-with-large-front-logo/13170059-1-amber?$n_480w$&wid=476&fit=constrain"
+                alt="products" id="productThumb">
+              <div class="card-body">
+                <h5>Dickies ringer t-shirt with large front logo</h5>
+                <p class="card-text">HKD$264.55</p>
+              </div>
+            </div>
+            <div class="col-lg-3 col-sm-6 cards">
+              <img class="card-img-top"
+                src="https://images.asos-media.com/products/adidas-originals-adicolor-three-stripe-long-sleeve-t-shirt-in-white/11710940-1-white?$n_480w$&wid=476&fit=constrain"
+                alt="products" id="productThumb">
+              <div class="card-body">
+                <h5>adidas Originals adicolor three stripe long sleeve t-shirt in white</h5>
+                <p class="card-text">HKD$349.21</p>
+              </div>
+            </div>
+            <div class="col-lg-3 col-sm-6 cards">
+              <img class="card-img-top"
+                src="https://images.asos-media.com/products/new-look-organic-roll-sleeve-tee-in-white/13202081-1-white?$n_480w$&wid=476&fit=constrain"
+                alt="products" id="productThumb">
+              <div class="card-body">
+                <h5>New Look organic roll sleeve tee in white</h5>
+                <p class="card-text">HKD$73.97</p>
+              </div>
+            </div>
+            <div class="col-lg-3 col-sm-6 cards">
+              <img class="card-img-top"
+                src="https://images.asos-media.com/products/puma-essentials-logo-t-shirt-in-white/13187202-1-black?$n_480w$&wid=476&fit=constrain"
+                alt="products" id="productThumb">
+              <div class="card-body">
+                <h5>Puma Essentials Logo t-shirt in white</h5>
+                <p class="card-text">HKD$126.98</p>
+              </div>
+            </div>
+            <div class="col-lg-3 col-sm-6 cards">
+              <img class="card-img-top"
+                src="https://images.asos-media.com/products/miss-selfridge-milk-maid-tee-in-ditsy-floral-print/13142845-1-black?$n_480w$&wid=476&fit=constrain"
+                alt="products" id="productThumb">
+              <div class="card-body">
+                <h5>Miss Selfridge milk maid tee in ditsy floral print</h5>
+                <p class="card-text">HKD$296.30</p>
+              </div>
+            </div>
+            <div class="col-lg-3 col-sm-6 cards">
+              <img class="card-img-top"
+                src="https://images.asos-media.com/products/santa-cruz-dot-t-shirt-with-screaming-hand-back-print-in-washed-neon-green-exclusive-to-asos/13036675-1-gr1green1?$n_480w$&wid=476&fit=constrain"
+                alt="products" id="productThumb">
+              <div class="card-body">
+                <h5>Santa Cruz Dot t-shirt with Screaming Hand back print in washed neon green</h5>
+                <p class="card-text">HKD$253.97</p>
+              </div>
+            </div>
+            <div class="col-lg-3 col-sm-6 cards">
+              <img class="card-img-top"
+                src="https://images.asos-media.com/products/puma-essentials-black-logo-cropped-hoodie/12076513-1-pumablack?$n_480w$&wid=476&fit=constrain"
+                alt="products" id="productThumb">
+              <div class="card-body">
+                <h5>Puma Essentials+ black logo cropped hoodie</h5>
+                <p class="card-text">HKD$317.46</p>
+              </div>
+            </div>
+            <div class="col-lg-3 col-sm-6 cards">
+              <img class="card-img-top"
+                src="https://images.asos-media.com/products/stradivarius-ruched-sleeved-blazer-in-black/11721647-1-black?$n_480w$&wid=476&fit=constrain"
+                alt="products" id="productThumb">
+              <div class="card-body">
+                <h5>Stradivarius ruched sleeved blazer in black</h5>
+                <p class="card-text">HKD$317.35</p>
+              </div>
+            </div>
+            <div class="col-lg-3 col-sm-6 cards">
+              <img class="card-img-top"
+                src="https://images.asos-media.com/products/stradivarius-flowy-blazer-in-checks/12706576-1-grey?$n_480w$&wid=476&fit=constrain"
+                alt="products" id="productThumb">
+              <div class="card-body">
+                <h5>Stradivarius flowy blazer in checks</h5>
+                <p class="card-text">HKD$275.03</p>
+              </div>
+            </div>
+            <div class="col-lg-3 col-sm-6 cards">
+              <img class="card-img-top"
+                src="https://images.asos-media.com/products/collusion-tall-check-print-blazer/11779280-1-multi?$n_480w$&wid=476&fit=constrain"
+                alt="products" id="productThumb">
+              <div class="card-body">
+                <h5>COLLUSION check print blazer</h5>
+                <p class="card-text">HKD$317.46</p>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+        <!-- Footer -->
+        <footer class="col-lg-12 py-3 bg-light" id="footer">
+            <div class="footerContainer">
+              <p class="m-0 text-center">Copyright &copy; Zora 2019</p>
+            </div>
+        </footer>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+
+</html>

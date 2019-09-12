@@ -2,11 +2,10 @@ var productList = Handlebars.compile(
   `
   {{#each clothes}}
   <div class="col-lg-3 col-sm-6 cards">
-    <a href""><img class="card-img-top" src={{img}} alt="products" id="productThumb" data-id="{{clothes_id}}"></a>
+    <a href""><img class="card-img-top" src={{img}} alt="products" id="productThumb" data-id="{{clothes_id}}" gender="{{gender_id}}"></a>
     <div class="card-body">
-      <h5> {{price}}</h5>
-      <p class="card-text"> {{name}}
-      </p>
+      <h5>{{name}}</h5>
+      <p class="card-text">{{price}}</p>
     </div>
     <div class="form-group">
       <label>Quantity:</label>
@@ -14,10 +13,6 @@ var productList = Handlebars.compile(
     </div>
 
     <br>
-
-
-
-
     <div class="dropdown">
     <label>Size:</label>
   <button class="btn btn-link dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">S
@@ -30,14 +25,8 @@ var productList = Handlebars.compile(
     <a class="dropdown-item" href="#">L</a>
     <a class="dropdown-item" href="#">XL</a>
   </div>
-
-
-
-
 </div>
-
 <br>
-
     <button type="button" class="btn btn-primary cartButton" id={{id}}>Add to cart</button>
       <h5>{{name}}</h5>
       <p class="card-text">{{price}}</p>
@@ -52,7 +41,6 @@ var cartTemplate = Handlebars.compile(
   //Table headers and structure comes first, then the actual content follows
   `
   <h1> Your Shopping Cart </h1>
-
 
   <table class="table table-hover">
   <thead>
@@ -86,8 +74,6 @@ var cartTemplate = Handlebars.compile(
       <td></td>
       
       <td>Grand Total:</td>
-      
-    
 
       <td>{{#each cart}}{{#if @last}}{{totalPrice}}{{/if}}{{/each}}</td>
      
@@ -156,6 +142,24 @@ const reloadPage = data => {
     })
   );
 };
+//~~~~~~~~~~~~ Suggestions ~~~~~~~~~~~~//
+var suggestion = Handlebars.compile(
+  `
+  <h5>Other {{horoscope}} also viewed:</h5>
+  <div class="row" id="horoSuggestion">
+  {{#each suggestions}}
+  <div class="col-lg-4 col-sm-4">
+    <a href=""><img class="card-img-top" src="{{img}}" alt="products" id="productThumb" data-id="{{clothes_id}}" gender="{{gender_id}}"></a>
+    <div class="card-body">
+    <h6>{{name}}</h6>
+    <p class="card-text">{{price}}</p>
+    </div>
+  </div>
+  {{/each}}
+  </div>
+  `
+);
+// // // // // // // // // // // // // // // // 
 const reloadCart = data => {
   $("#cart").html(
     cartTemplate({
@@ -168,18 +172,15 @@ var productListTrend = Handlebars.compile(
   `
   {{#each clothes}}
   <div class="col-lg-3 col-sm-6 cards">
-    <a href""><img class="card-img-top" src={{img}} alt="products" id="productThumb" data-id="{{clothes_id}}"></a>
+    <a href""><img class="card-img-top" src={{img}} alt="products" id="productThumb" data-id="{{clothes_id}}" gender="{{gender_id}}"></a>
     <div class="card-body">
       <h4 class="card-title">
         <a href="#"> {{id}}</a>
       </h4>
-      <h5> {{price}}</h5>
-      <p class="card-text"> {{name}}
-      </p>
-    </div>
-    <button type="button" class="btn btn-primary cartButton" id={{id}}>Add to cart</button>
       <h5>{{name}}</h5>
       <p class="card-text">{{price}}</p>
+    </div>
+    <button type="button" class="btn btn-primary cartButton" id={{id}}>Add to cart</button>
     </div>
   </div>
   {{/each}}
@@ -210,7 +211,7 @@ var productListCasual = Handlebars.compile(
   `
   {{#each clothes}}
   <div class="col-lg-3 col-sm-6 cards">
-    <a href""><img class="card-img-top" src={{img}} alt="products" id="productThumb" data-id="{{clothes_id}}"></a>
+    <a href""><img class="card-img-top" src={{img}} alt="products" id="productThumb" data-id="{{clothes_id}}" gender="{{gender_id}}"></a>
     <div class="card-body">
       <h5>{{name}}</h5>
       <p class="card-text">{{price}}</p>
@@ -245,7 +246,7 @@ var productListFormal = Handlebars.compile(
   `
   {{#each clothes}}
   <div class="col-lg-3 col-sm-6 cards">
-    <a href""><img class="card-img-top" src={{img}} alt="products" id="productThumb" data-id="{{clothes_id}}"></a>
+    <a href""><img class="card-img-top" src={{img}} alt="products" id="productThumb" data-id="{{clothes_id}}" gender="{{gender_id}}"></a>
     <div class="card-body">
       <h5>{{name}}</h5>
       <p class="card-text">{{price}}</p>
@@ -278,7 +279,7 @@ var productListOut = Handlebars.compile(
   `
   {{#each clothes}}
   <div class="col-lg-3 col-sm-6 cards">
-    <a href""><img class="card-img-top" src={{img}} alt="products" id="productThumb" data-id="{{clothes_id}}"></a>
+    <a href""><img class="card-img-top" src={{img}} alt="products" id="productThumb" data-id="{{clothes_id}}" gender="{{gender_id}}"></a>
     <div class="card-body">
       <h5>{{name}}</h5>
       <p class="card-text">{{price}}</p>
@@ -309,10 +310,11 @@ const reloadOutPage = data => {
   );
 };
 
-const toProduct = data => {
+const toProduct = (data, horoscope) => {
   $("#suggestions").html(
     suggestion({
-      suggestions: data
+      suggestions: data,
+      horoscope: horoscope
     })
   );
 };
@@ -320,19 +322,10 @@ const toProduct = data => {
 Axios requests and event listeners */
 //Getting user cart info
 $(() => {
-
-
-
-  
-
-  
-
-  
-
-
-
-
-
+  //capture the horoscope
+  let greeting = $(".justify-content-end span").text();
+  let greetArray = greeting.trim().split(" ");
+  let horoscope = greetArray[greetArray.length - 1];
 
   axios
     .get("/api/clothes")
@@ -409,9 +402,6 @@ $(() => {
     let productId = $(that).attr("id");
     let productQuantity = $(`[href=${productId}]`).val();
 
-
-
-
     // console.log(productId, productQuantity)
 
     axios
@@ -421,7 +411,7 @@ $(() => {
       })
       .then(res => {
         // console.log(res.data.quantity)
-        
+
         if (res.data.status == "success") {
 
 
@@ -430,12 +420,12 @@ $(() => {
             res.data.msg +
             "</div>"
 
-            
+
           );
 
-           setTimeout(function () {
-             location.reload(true);
-           }, 1000);
+          setTimeout(function () {
+            location.reload(true);
+          }, 1000);
 
 
         } else if (res.data.status == "fail") {
@@ -450,28 +440,50 @@ $(() => {
         }, 500);
       })
       .then(() => {
-        
+
       })
       ;
   });
 
   $("#displayBox").on("click", "img", function (e) {
     // e.preventDefault();
-    console.log(e.currentTarget.getAttribute("data-id"));
     let id = e.currentTarget.getAttribute("data-id");
+    let gender = e.currentTarget.getAttribute('gender');
 
     axios
-      .get("/api/productInfo/" + id, {
-        id: id
-      })
+      .get("/api/productInfo/" + id, {id: id})
       .then(res => {
-        // console.log(res.data);
+        reloadPage(res.data);
+      })
+      .catch(err => {
+        console.log(err);
+      });
+
+    axios
+      .post("/api/suggestion/" + horoscope + '/' + gender, { horoscope: horoscope, gender: gender })
+      .then(res => {
+        toProduct(res.data, horoscope, gender)
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  });
+
+  $("#suggestions").on('click', 'img', function (e) {
+    e.preventDefault();
+    console.log(e.currentTarget.getAttribute('data-id'));
+    let id = e.currentTarget.getAttribute('data-id');
+
+    axios
+      .get("/api/productInfo/" + id, { id: id })
+      .then(res => {
         reloadPage(res.data);
       })
       .catch(err => {
         console.log(err);
       });
   });
+
   $("#productStyle").on("click", "a", function (e) {
     // e.preventDefault();
     console.log(e.currentTarget.getAttribute("data-id"));
@@ -530,6 +542,8 @@ $(() => {
     // e.preventDefault();
     console.log(e.currentTarget.getAttribute("data-id"));
     let id = e.currentTarget.getAttribute("data-id");
+    let gender = e.currentTarget.getAttribute('gender');
+    console.log(gender)
 
     axios
       .get("/api/productInfo/" + id, {
@@ -542,11 +556,35 @@ $(() => {
       .catch(err => {
         console.log(err);
       });
+
+    axios
+      .post("/api/suggestion/" + horoscope + '/' + gender, {horoscope: horoscope, gender: gender})
+      .then(res => {
+      toProduct(res.data, horoscope, gender)
+      })
+      .catch(err => {
+      console.log(err);
+    });
   });
+  $("#suggestions").on('click', 'img', function (e) {
+    e.preventDefault();
+    let id = e.currentTarget.getAttribute('data-id');
+
+    axios
+      .get("/api/productInfo/" + id, { id: id })
+      .then(res => {
+        reloadTrendPage(res.data);
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  });
+
   $("#displayBoxFormal").on("click", "img", function (e) {
     // e.preventDefault();
     console.log(e.currentTarget.getAttribute("data-id"));
     let id = e.currentTarget.getAttribute("data-id");
+    let gender = e.currentTarget.getAttribute('gender');
 
     axios
       .get("/api/productInfo/" + id, {
@@ -559,11 +597,35 @@ $(() => {
       .catch(err => {
         console.log(err);
       });
+
+    axios
+      .post("/api/suggestion/" + horoscope + '/' + gender, {horoscope: horoscope, gender: gender})
+      .then(res => {
+      toProduct(res.data, horoscope, gender)
+      })
+      .catch(err => {
+      console.log(err);
+    });
   });
+  $("#suggestions").on('click', 'img', function (e) {
+    e.preventDefault();
+    let id = e.currentTarget.getAttribute('data-id');
+
+    axios
+      .get("/api/productInfo/" + id, { id: id })
+      .then(res => {
+        reloadFormalPage(res.data);
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  });
+
   $("#displayBoxOut").on("click", "img", function (e) {
     // e.preventDefault();
     console.log(e.currentTarget.getAttribute("data-id"));
     let id = e.currentTarget.getAttribute("data-id");
+    let gender = e.currentTarget.getAttribute('gender');
 
     axios
       .get("/api/productInfo/" + id, {
@@ -577,11 +639,35 @@ $(() => {
       .catch(err => {
         console.log(err);
       });
+    
+    axios
+      .post("/api/suggestion/" + horoscope + '/' + gender, {horoscope: horoscope, gender: gender})
+      .then(res => {
+      toProduct(res.data, horoscope, gender)
+      })
+      .catch(err => {
+      console.log(err);
+    });
   });
+  $("#suggestions").on('click', 'img', function (e) {
+    e.preventDefault();
+    let id = e.currentTarget.getAttribute('data-id');
+
+    axios
+      .get("/api/productInfo/" + id, { id: id })
+      .then(res => {
+        reloadOutPage(res.data);
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  });
+
   $("#displayBoxCasual").on("click", "img", function (e) {
     // e.preventDefault();
     console.log(e.currentTarget.getAttribute("data-id"));
     let id = e.currentTarget.getAttribute("data-id");
+    let gender = e.currentTarget.getAttribute('gender');
 
     axios
       .get("/api/productInfo/" + id, {
@@ -594,11 +680,35 @@ $(() => {
       .catch(err => {
         console.log(err);
       });
+    
+    axios
+      .post("/api/suggestion/" + horoscope + '/' + gender, {horoscope: horoscope, gender: gender})
+      .then(res => {
+      toProduct(res.data, horoscope, gender)
+      })
+      .catch(err => {
+      console.log(err);
+    });
   });
+  $("#suggestions").on('click', 'img', function (e) {
+    e.preventDefault();
+    let id = e.currentTarget.getAttribute('data-id');
+
+    axios
+      .get("/api/productInfo/" + id, { id: id })
+      .then(res => {
+        reloadFormalPage(res.data);
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  });
+
   $("#displayBoxOut").on("click", "img", function (e) {
     // e.preventDefault();
     console.log(e.currentTarget.getAttribute("data-id"));
     let id = e.currentTarget.getAttribute("data-id");
+    let gender = e.currentTarget.getAttribute('gender');
 
     axios
       .get("/api/productInfo/" + id, {
@@ -611,16 +721,65 @@ $(() => {
       .catch(err => {
         console.log(err);
       });
+
+    axios
+      .post("/api/suggestion/" + horoscope + '/' + gender, {horoscope: horoscope, gender: gender})
+      .then(res => {
+      toProduct(res.data, horoscope, gender)
+      })
+      .catch(err => {
+      console.log(err);
+    });
   });
+  $("#suggestions").on('click', 'img', function (e) {
+    e.preventDefault();
+    console.log(e.currentTarget.getAttribute('data-id'));
+    let id = e.currentTarget.getAttribute('data-id');
+
+    axios
+      .get("/api/productInfo/" + id, { id: id })
+      .then(res => {
+        // console.log(res.data);
+        reloadOutPage(res.data);
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  });
+
   $("#displayBoxCasual").on("click", "img", function (e) {
     // e.preventDefault();
     console.log(e.currentTarget.getAttribute("data-id"));
     let id = e.currentTarget.getAttribute("data-id");
+    let gender = e.currentTarget.getAttribute('gender');
 
     axios
       .get("/api/productInfo/" + id, {
         id: id
       })
+      .then(res => {
+        // console.log(res.data);
+        reloadCasualPage(res.data);
+      })
+      .catch(err => {
+        console.log(err);
+      });
+      
+    axios
+      .post("/api/suggestion/" + horoscope + '/' + gender, {horoscope: horoscope, gender: gender})
+      .then(res => {
+      toProduct(res.data, horoscope, gender)
+      })
+      .catch(err => {
+      console.log(err);
+    });
+  });
+$("#suggestions").on('click', 'img', function (e) {
+    e.preventDefault();
+    let id = e.currentTarget.getAttribute('data-id');
+
+    axios
+      .get("/api/productInfo/" + id, { id: id })
       .then(res => {
         // console.log(res.data);
         reloadCasualPage(res.data);
