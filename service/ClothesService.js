@@ -6,8 +6,10 @@ class ClothesService {
     let query = this.knex
       .select("name", "clothes_id", "price", "img", "gender_id")
       .from("clothes")
-      .where({ horoscope_id: 0 })
-      .limit(12);
+      .where({
+        horoscope_id: 0,
+        type_id: 2
+      });
     return query.then(rows => {
       return rows.map(row => ({
         name: row.name,

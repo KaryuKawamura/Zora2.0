@@ -11,7 +11,12 @@ class ProductService {
     // console.log(query);
     return query.then(data => {
       // console.log(data);
-      return data;
+      return data.map(row => ({
+        name: row.name,
+        img: row.img,
+        id: row.clothes_id,
+        price: row.price
+      }));
     });
   }
 }

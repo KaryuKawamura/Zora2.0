@@ -1,5 +1,5 @@
 body {
-  font-family: 'Arima Madurai', cursive;
+  font-family: Georgia, "Times New Roman", Times, serif;
 }
 /***~~~~~~ Loading ~~~~~***/
 .loader {
@@ -9,21 +9,22 @@ body {
   left: 0;
   height: 650%;
   width: 100%;
-  background: url('/images/starry_gif1.gif') repeat;
+  background: url("/images/starry_gif1.gif") repeat;
 }
-.loader.hidden  {
+.loader.hidden {
   animation: fadeOut 2s;
   animation-fill-mode: forwards;
 }
 @keyframes fadeOut {
   100% {
-      opacity: 0;
-      visibility: hidden;
+    opacity: 0;
+    visibility: hidden;
   }
 }
 /**********************************/
 /* Top Navigation Bar Elements */
-nav #logo, #horoscopeIcon {
+nav #logo,
+#horoscopeIcon {
   width: 40px;
   height: 40px;
 }
@@ -46,12 +47,12 @@ nav #logo, #horoscopeIcon {
 
 /********* Landing Page **********/
 #indexLanding .navbar {
-  background-color: rgb(255,255,255,0.85);
+  background-color: rgb(255, 255, 255, 0.85);
   padding: 1% 0;
 }
 
 #indexLanding {
-  background: url('/images/landing_bg.jpg') fixed no-repeat; 
+  background: url("/images/landing_bg.jpg") fixed no-repeat;
   position: relative;
   background-size: cover;
 }
@@ -63,13 +64,13 @@ nav #logo, #horoscopeIcon {
   padding-bottom: 20px;
 }
 
-.container-fluid { 
+.container-fluid {
   margin: 0;
 }
 
 .fixed-container {
   width: 100%;
-  height: auto
+  height: auto;
 }
 
 #carousel-inner img {
@@ -80,7 +81,7 @@ nav #logo, #horoscopeIcon {
   margin: 0;
   padding: 10px;
   display: block;
-  text-align: center;    
+  text-align: center;
 }
 
 #shop_cards img {
@@ -127,6 +128,13 @@ footer #footer {
 /********* ProductList Page **********/
 #home {
   padding-top: 20px;
+  /* background-size: contain;
+  background-repeat: repeat repeat;  */
+  color: rgb(211, 211, 211);
+}
+
+.py-3 .m-0 {
+  color: #000000;
 }
 
 /********* ProductInfo Page **********/

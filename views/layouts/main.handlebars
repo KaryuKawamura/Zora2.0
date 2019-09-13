@@ -15,8 +15,9 @@
   {{!-- Top Navigation Bar --}}
   <nav class="navbar navbar-light bg-light ">
     {{!-- Logo --}}
-    <a class="navbar-brand" href="/secret"><img src="/images/logo.png" class="d-inline-block align-center" alt="" id="logo">
-    Zora
+    <a class="navbar-brand" href="/secret"><img src="/images/logo.png" class="d-inline-block align-center" alt=""
+        id="logo">
+      Zora
     </a>
     {{!-- User horoscope icon --}}
     <div class="justify-content-end">
@@ -47,6 +48,7 @@
   {{{body}}}
 
   {{>footer}}
+
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
     integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
     crossorigin="anonymous"></script>
@@ -60,40 +62,27 @@
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
   <script src="/js/main.js"></script>
   <script>
-    $(() => {
-
-      
-{{!--   
-
-     $("#displayBox").on('click', '.dropdown-menu button', (e) => {
-       console.log($(e.currentTarget).text())
-
-        $('#selected').text($(e.currentTarget).text());
-
-      }); --}}
 
 
-      //Updating cart badge functionality
 
 
-      axios
-        .get("/api/cart")
-        .then(res => {
-          $("span.badge").html(res.data[0].totalQuantity);
-          reloadCart(res.data);
-        })
-        .catch(err => {
-          console.log(err);
-        });
+
+    //Updating cart badge functionality
 
 
-      
-  
-      
-    });
+    axios
+      .get("/api/cart")
+      .then(res => {
+        $("span.badge").html(res.data[0].totalQuantity);
+        reloadCart(res.data);
+      })
+      .catch(err => {
+        console.log(err);
+      });
 
 
   </script>
+
 </body>
 
 </html>

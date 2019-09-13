@@ -3,30 +3,44 @@
 
 <head>
   <meta charset="utf-8">
-  <title>success</title>
+  <title>Sign Up</title>
+  <link rel="shortcut icon" href="./images/favicon.ico" />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="./css/stylesheet.css">
 </head>
 
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-  integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
 <body>
-
-<h1>Make an Account!</h1>
-
-<form action="/signup" method="post">
-  <div class="form-group">
-    <label>Name:</label>
-    <input type="text" name="username" />
+  <div id="indexLanding">
+    <nav class="navbar navbar-expand-md navbar-light">
+      <a class="navbar-brand" href="/"><img src="/images/logo.png" alt="Zora" id="logo">
+        Zora
+      </a>
+      <a href="/login" class="ml-auto" id="nav-link">Login</a>
+      <a href="/signup" id="nav-link">Sign up</a>
+    </nav>
   </div>
-  <div class="form-group">
-    <label>Password:</label>
-    <input type="password" name="password" />
-  </div>
-  <div>
-    <input type="submit" class="btn btn-primary" value="Sign up" />
-  </div>
-</form>
+  <h1>Make an Account!</h1>
 
+  <form action="/signup" method="post">
+    <div class="form-group">
+      <label>Name:</label>
+      <input type="text" name="username" />
+    </div>
+    <div class="form-group">
+      <label>Password:</label>
+      <input type="password" name="password" />
+    </div>
+    <div>
+      <input type="submit" class="btn btn-primary" value="Next" />
+    </div>
+  </form>
+  <!-- Footer -->
+  <footer class="py-3 bg-light">
+    <div class="container">
+      <p class="m-0 text-center">Copyright &copy; Zora 2019</p>
+    </div>
+  </footer>
 </body>
 
 </html>

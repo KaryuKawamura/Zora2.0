@@ -1,2 +1,16 @@
 <div id="cart">
+
+</div>
+<div style="position: relative; margin:auto;">
+  <form action="/v1/charge" method="post">
+    <article>
+      <label>Payment {{totalPrice}}</this></label>
+    </article>
+
+    <script src="//checkout.stripe.com/v2/checkout.js" class="stripe-button"
+      data-key='pk_test_s3LeBFjrUTwwV63pFNZbMwPz00or2hluQ3' data-locale="auto" data-amount={{totalPrice}}
+      data-description='You just bought a trojan.' data-currency='HKD'>
+      </script>
+    <input type='hidden' value={{totalPrice}} name='chargeAmount'>
+  </form>
 </div>

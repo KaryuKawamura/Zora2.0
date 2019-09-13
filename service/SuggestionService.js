@@ -17,6 +17,7 @@ class SuggestionService {
                 .limit(3);
 
             return query.then(data => {
+                console.log('got the suggestion data')
                 return data;
             });
         })

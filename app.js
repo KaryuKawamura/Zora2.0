@@ -30,7 +30,6 @@ const SuggestionRouter = require("./router/SuggestionRouter");
 
 // const stripe = require("stripe")("pk_test_fcZ614e9OlUYxHihml2qDRNW00HwgZPpJU");
 
-
 require("dotenv").config();
 
 app.engine("handlebars", hb({ defaultLayout: "main" }));
@@ -69,17 +68,43 @@ const suggestionService = new SuggestionService(knex);
 
 app.use("/", router);
 app.use("/api/cart/", new CartRouter(cartService).router());
-app.use("/api/clothes", new ClothesRouter(clothesService).router());
-app.use("/api/productInfo", new ProductRouter(productService).router());
-app.use('/api/suggestion',(new SuggestionRouter(suggestionService).router()));
-app.use(
-  "/api/productTypeInfo",
-  new ProductTypeRouter(productTypeService).router()
-);
 app.use(
   "/api/clothes/trend",
   new ClothesTrendRouter(clothesTrendService).router()
 );
+app.use("/api/clothes", new ClothesRouter(clothesService).router());
+app.use("/api/productInfo", new ProductRouter(productService).router());
+app.use("/api/suggestion", new SuggestionRouter(suggestionService).router());
+app.use(
+  "/api/productTypeInfo",
+  new ProductTypeRouter(productTypeService).router()
+);
+
+// const keyPublishable = process.env.PUBLISHABLE_KEY;
+const keySecret = process.env.SECRET_KEY;
+const stripe = require("stripe")(keySecret);
+
+app.post("/v1/charge", function(req, res) {
+  let token = req.body.stripeToken;
+  let chargeAmount = req.body.chargeAmount;
+  var charge = stripe.charges.create(
+    {
+      amount: chargeAmount,
+      currency: "HKD",
+      source: token
+    },
+    function(err, charge) {
+      if (err) {
+        console.log("Your Card was declined...");
+      }
+      console.log(charge);
+    }
+  );
+  console.log("???????");
+  console.log("payment worked?");
+
+  res.redirect("/success");
+});
 
 app.listen(8080, function() {
   console.log(`Application is listening to port 8080`);
