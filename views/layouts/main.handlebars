@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <title>Zora</title>
-  <link rel="shortcut icon" href="./images/favicon.ico"/>
+  <link rel="shortcut icon" href="./images/favicon.ico" />
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link rel="stylesheet" href="./css/stylesheet.css">
@@ -21,25 +21,25 @@
     </a>
     {{!-- User horoscope icon --}}
     <div class="justify-content-end">
-    <img src="/images/{{horoscope}}.png" class="ml-auto" alt="sign" id="horoscopeIcon">
-    {{!-- Greeting --}}
-    <span class="navbar-text" id="greeting">
-    Welcome back {{name}}, The Beautiful {{horoscope}}
-    </span>
-    {{!-- Cart --}}
-    <a href="/cart">
-    <button type="button" class="btn btn-primary">
-      Cart
-      <span class="badge badge-light"></span>
-    </button></a>
+      <img src="" class="ml-auto" alt="" id="horoscopeIcon">
+      {{!-- Greeting --}}
+      <span class="navbar-text" id="greeting">
+        Welcome back {{name}}, The Beautiful {{horoscope}}
+      </span>
+      {{!-- Cart --}}
+      <a href="/cart">
+        <button type="button" class="btn btn-dark" id="topCartButton">
+          <img src="../images/cart.png">
+          <span class="badge badge-pill badge-danger"></span>
+        </button></a>
 
-    
-    {{!-- Logout --}}
-    <a href="/logout" id="logout">
-      <button class="btn btn-outline-success" type="submit">
-        Logout
-      </button>
-    </a>
+
+      {{!-- Logout --}}
+      <a href="/logout" id="logout">
+        <button class="btn btn-outline-dark" type="submit">
+          Logout
+        </button>
+      </a>
     </div>
 
   </nav>
@@ -60,32 +60,9 @@
     crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script src="https://kit.fontawesome.com/4e127530a8.js"></script>
   <script src="/js/main.js"></script>
-  <script>
-
-
-
-
-
-    //Updating cart badge functionality
-
-
-    axios
-      .get("/api/cart")
-      .then(res => {
-        $("span.badge").html(res.data[0].totalQuantity);
-        reloadCart(res.data);
-      })
-      .catch(err => {
-        console.log(err);
-      });
-
-
-  </script>
-
+ 
 </body>
 
 </html>
-
-
-{{!-- $("span.badge").html(res.data[0].totalQuantity); --}}

@@ -78,16 +78,16 @@ module.exports = express => {
   });
 
   router.get("/cart", (req, res) => {
-    cartService.list(req.user.name).then(response => {
+    // cartService.list(req.user.name).then(response => {
       // add logic to handle if there is no data in the cart so that it doesnt throw an error - response[0.totalPrice] like a if else
       res.render("cart", {
         keyPublishable: process.env.PK,
         name: req.user.name,
         horoscope: req.user.horoscope,
-        totalPrice: response[0].totalPrice
+        totalPrice: req.totalPrice
       });
-      console.log(response[0].totalPrice);
-    });
+    //   console.log(response[0].totalPrice);
+    // });
   });
 
   router.get("/error", (req, res) => {
@@ -121,6 +121,7 @@ module.exports = express => {
   router.post("/horoscope", dateToHoroscope, (req, res) => {
     res.redirect("/");
   });
+  
   router.get("/success", (req, res) => {
     res.render("success");
   });

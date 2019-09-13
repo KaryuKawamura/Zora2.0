@@ -104,6 +104,35 @@ footer #footer {
   padding: 0%;
 }
 
+/********* Sign Up Page **********/
+#signup {
+  background-image: url("https://www.barraques.cat/pngfile/big/0-7755_nature-pier-bridge-d-river-water-sunset-night.jpg");
+  height: 100vh;
+}
+#signup h1{
+  position: relative;
+  left: 600px;
+  color: white;
+ }
+ 
+ #signup form{
+   position: relative;
+   margin: 30px 600px  30px; ;
+ 
+ }
+ #signup label{
+   color: rgb(255, 255, 255);
+   font-size: 120%;
+ }
+ #signup input{
+   background-color: rgb(233, 227, 227);
+   height: 50px;
+ width: 350px;
+ }
+ #signup .btn{
+  color: #000000;
+ }
+
 /********* Horoscope Calculator **********/
 #bigContainerScope {
   background: url('/images/horoscope_bg.jpg') fixed repeat repeat;
@@ -125,6 +154,33 @@ footer #footer {
   font-size: 18px;
 }
 
+/********* Log In Page **********/
+#login {
+  background-image: url("https://www.barraques.cat/pngfile/big/0-7755_nature-pier-bridge-d-river-water-sunset-night.jpg");
+  height: 100vh;
+}
+#login h1{
+ position: relative;
+ left: 600px;
+ color: white;
+}
+
+#login form{
+  position: relative;
+  margin: 30px 600px  30px; ;
+
+}
+#login label{
+  color: rgb(255, 255, 255);
+  font-size: 120%;
+}
+#login input{
+  background-color: rgb(233, 227, 227);
+  height: 50px;
+width: 350px;
+color: #000000;
+}
+
 /********* ProductList Page **********/
 #home {
   padding-top: 20px;
@@ -136,6 +192,35 @@ footer #footer {
 .py-3 .m-0 {
   color: #000000;
 }
+
+.card-body {
+  min-height: 180px;
+}
+
+h5 {
+  font-size: 14px;
+}
+
+p {
+  font-size: 12px;
+}
+
+.cartButton img {
+  height: 15px;
+}
+
+#topCartButton img {
+  height: 15px;
+}
+
+.cards {
+  margin-bottom: 40px;
+}
+
+.dropdown button {
+  background-color: white;
+}
+
 
 /********* ProductInfo Page **********/
 #productInfo {
@@ -169,4 +254,16 @@ footer #footer {
 
 #cartThumbnail {
   height: 150px;
+}
+
+#cart {
+  color: rgb(211, 211, 211);
+}
+
+#cart .table-hover {
+  
+    /* margin:   50px ; */
+    /* padding: 70px 0 150px 0; */
+    background: rgba(255, 255, 255, 0.7);
+    text-align: center;
 }

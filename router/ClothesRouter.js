@@ -11,8 +11,9 @@ class ClothesRouter {
 
   get(req, res) {
     console.log("I am routing");
+    console.log(req.body.horoscope);
     return this.clothesService
-      .list(req.user.id)
+      .list()
       .then(clothes => res.json(clothes))
       .catch(err => res.status(500).json(err));
   }

@@ -2,31 +2,39 @@ var productList = Handlebars.compile(
   `
   {{#each clothes}}
   <div class="col-lg-3 col-sm-6 cards">
-    <a href""><img class="card-img-top" src={{img}} alt="products" id="productThumb" data-id="{{clothes_id}}" gender="{{gender_id}}"></a>
+    <a href""><img class="card-img-top" src={{img}} alt="products" id="productThumb" data-id="{{clothes_id}}"
+        gender="{{gender_id}}"></a>
     <div class="card-body">
       <h5>{{name}}</h5>
       <p class="card-text">{{price}}</p>
     </div>
-    <div class="form-group">
-      <label>Quantity:</label>
-        <input type="number" class="form-control" href={{id}} value="1" min="1">
+    <div class="input-group mb-2">
+      <div class="input-group-prepend">
+        <div class="input-group-text">Quantity:</div>
+      </div>
+      <input type="number" class="form-control" href={{id}} value="1" min="1">
     </div>
-    <br>
-    <div class="dropdown">
-    <label>Size:</label>
-  <button class="btn btn-link dropdown-toggle" type="button" href={{id}}ss data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">S
-  </button>
-  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" id={{id}}>
-    <a class="dropdown-item">XS</a>
-    <a class="dropdown-item">S</a>
-    <a class="dropdown-item">M</a>
-    <a class="dropdown-item">L</a>
-    <a class="dropdown-item">XL</a>
+    <div class="input-group mb-2 d-flex flex-nowrap">
+      <div class="input-group-prepend">
+        <div class="input-group-text">Size:</div>
+      </div>
+      <div class="dropdown input-group-prepend">
+        <button class="btn dropdown-toggle input-group-text" type="button" href={{id}}ss data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">S
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" id={{id}}>
+          <a class="dropdown-item">XS</a>
+          <a class="dropdown-item">S</a>
+          <a class="dropdown-item">M</a>
+          <a class="dropdown-item">L</a>
+          <a class="dropdown-item">XL</a>
+        </div>
+      </div>
+      <div class="input-group-append">
+        <button type="button" class="btn btn-dark cartButton" id={{id}}><img src="../images/cart.png"></button>
+      </div>
+    </div>
   </div>
-</div>
-<br>
-    <button type="button" class="btn btn-primary cartButton" id={{id}}>Add to cart</button>
-    </div>
   </div>
   {{/each}}
   `
@@ -69,7 +77,7 @@ var cartTemplate = Handlebars.compile(
         </div>
       </td>
       <td>{{price}}</td>
-      <td><button type="button" class="btn btn-primary removeButton" id={{id}}>Remove</button></td>
+      <td><button type="button" class="btn btn-dark removeButton" id={{id}}>Remove</button></td>
     </tr>
   {{/each}}
   <tr class="table-active">
@@ -79,22 +87,6 @@ var cartTemplate = Handlebars.compile(
       <td>Grand Total:</td>
       <td>{{#each cart}}{{#if @last}}{{totalPrice}}{{/if}}{{/each}}</td>    
       <td>
-      <div style="position: relative; margin:auto;">
-       <form action="/charge" method="post">
-       <article>
-          <label>Checkout</this></label>
-        </article>
-        <script
-        src="//checkout.stripe.com/v2/checkout.js"
-        class="stripe-button"
-        data-key="<%= keyPublishable %>"
-        data-locale="auto"
-        data-description="Checkout form"
-        data-amount="{{#each cart}}{{#if @last}}{{total}}{{/if}}{{/each}}"
-        >
-        </script>
-        </form>
-        </div>
       </td>
     </tr>
   </tbody>
@@ -105,34 +97,39 @@ var productInfo = Handlebars.compile(
   `
   {{#each clothes}}
   <div class="col-lg-6 col-md-6">
-  <img class="card-img-top" src="{{img}}" alt="{{name}}">
+    <img class="card-img-top" src="{{img}}" alt="{{name}}">
   </div>
   <div class="col-lg-6 col-md-6">
-      <h4>{{id}}</h4></br>
-      <h4>{{name}}</h4></br>
-      <p>{{price}}</p></br>
-      <div class="form-group">
-  <label>Quantity:</label>
-  <input type="number" class="form-control" href={{id}} value="1" min="1">
-</div>
-<br>
-<div class="dropdown">
-  <label>Size:</label>
-  <button class="btn btn-link dropdown-toggle" type="button" href={{id}}ss data-toggle="dropdown" aria-haspopup="true"
-    aria-expanded="false">S
-  </button>
-  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" id={{id}}>
-    <a class="dropdown-item">XS</a>
-    <a class="dropdown-item">S</a>
-    <a class="dropdown-item">M</a>
-    <a class="dropdown-item">L</a>
-    <a class="dropdown-item">XL</a>
+    <h4>{{id}}</h4></br>
+    <h4>{{name}}</h4></br>
+    <p>{{price}}</p></br>
+    <div class="input-group mb-2">
+      <div class="input-group-prepend">
+        <div class="input-group-text">Quantity:</div>
+      </div>
+      <input type="number" class="form-control" href={{id}} value="1" min="1">
+    </div>
+    <div class="input-group mb-2 d-flex flex-nowrap">
+      <div class="input-group-prepend">
+        <div class="input-group-text">Size:</div>
+      </div>
+      <div class="dropdown input-group-prepend">
+        <button class="btn dropdown-toggle input-group-text" type="button" href={{id}}ss data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">S
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" id={{id}}>
+          <a class="dropdown-item">XS</a>
+          <a class="dropdown-item">S</a>
+          <a class="dropdown-item">M</a>
+          <a class="dropdown-item">L</a>
+          <a class="dropdown-item">XL</a>
+        </div>
+      </div>
+      <div class="input-group-append">
+        <button type="button" class="btn btn-dark cartButton" id={{id}}><img src="../images/cart.png"></button>
+      </div>
+    </div>
   </div>
-</div>
-<br>
-<div>
-  <button type="button" class="btn btn-primary cartButton" id={{id}}>Add to cart</button>
-</div>
   </div>
 {{/each}}
   `
@@ -201,18 +198,51 @@ $(() => {
     // console.log('button click')
     $("#suggestions").hide();
   });
+  console.log(horoscope)
+
+  if (horoscope === 'Pisces') {
+    $('#horoscopeIcon').attr('src', './images/pisces.png');
+  } else if (horoscope === 'Aries') {
+    $('#horoscopeIcon').attr('src', './images/aries.png');
+  } else if (horoscope === 'Taurus') {
+    $('#horoscopeIcon').attr('src', './images/taurus.png');
+  } else if (horoscope === 'Gemini') {
+    $('#horoscopeIcon').attr('src', './images/gemini.png');
+  } else if (horoscope === 'Cancer') {
+    $('#horoscopeIcon').attr('src', './images/cancer.png');
+  } else if (horoscope === 'Leo') {
+    $('#horoscopeIcon').attr('src', './images/leo.png');
+  } else if (horoscope === 'Virgo') {
+    $('#horoscopeIcon').attr('src', './images/Virgo.png');
+  } else if (horoscope === 'Libra') {
+    $('#horoscopeIcon').attr('src', './images/Libra.png');
+  } else if (horoscope === 'Scorpio') {
+    $('#horoscopeIcon').attr('src', './images/Scorpio.png');
+  } else if (horoscope === 'Sagittarius') {
+    $('#horoscopeIcon').attr('src', './images/sagittarius.png');
+  } else if (horoscope === 'Capricorn') {
+    $('#horoscopeIcon').attr('src', './images/Capricorn.png');
+  };
 
   axios
-    .get("/api/clothes")
+    .get("/api/clothes", {
+      horoscope: horoscope
+    })
     .then(res => {
       reloadNotes(res.data);
     })
     .catch(err => {
       console.log(err);
     });
+
+  //Updating cart badge functionality
   axios
     .get("/api/cart")
     .then(res => {
+      if (res.data !== undefined) {
+      $("span.badge").html(res.data[0].totalQuantity);
+      console.log(res.data);
+      }
       reloadCart(res.data);
     })
     .catch(err => {
@@ -225,7 +255,6 @@ $(() => {
     let productId = $(that).attr("id");
 
     // console.log(productId, productQuantity);
-
     axios
       .put("/api/cart/", {
         clothes_id: productId,
@@ -241,18 +270,19 @@ $(() => {
     let that = e.currentTarget;
     let productId = $(that).attr("id");
     let productQuantity = $(`[href=${productId}]`).val();
+    let productSize = $(`[href=${productId}ss]`).text();
 
     // console.log(productId, productQuantity)
 
     axios
       .post("/api/cart/", {
         clothes_id: productId,
-        quantity: productQuantity
+        quantity: productQuantity,
+        size: productSize
       })
       .then(res => {
         // console.log(res.data.quantity)
 
-        if (res.data.status == "success") {
           if (res.data.status == "success") {
             $("#message").html(
               '<br><div class="alert alert-success fade show" role="alert">' +
@@ -273,10 +303,22 @@ $(() => {
           setTimeout(function() {
             $(".alert").alert("close");
           }, 500);
-        }
+        
       })
       .then(() => {});
   });
+
+   $("#displayBox, #cart").on("click", ".dropdown-item", function (e) {
+
+     let size;
+     let that = e.currentTarget;
+     let productId = $(that).attr("id");
+
+     size = $(that).text();
+     productId = $(that).parent().attr("id");
+     $(`[href=${productId}ss]`).text(size)
+
+   });
 
   $("#displayBox").on("click", "img", function(e) {
     e.preventDefault();
